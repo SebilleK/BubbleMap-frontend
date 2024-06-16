@@ -1,9 +1,45 @@
 import Navbar from './Navbar';
+import axiosInstance from '../api/axiosInstance';
+import { useEffect, useState } from 'react';
+import bubbleteaImage from '../assets/bubbletea.jpg';
+
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 export default function Home() {
+	const [stores, setStores] = useState([]);
+
+	useEffect(() => {
+		axiosInstance
+			.get('/stores')
+			.then(response => {
+				setStores(response.data);
+			})
+			.catch(error => {
+				console.error(error);
+			});
+	}, []);
+
 	return (
-		<div>
+		<div className='bg-gray-100'>
 			<Navbar />
-			<h1>Homepage</h1>
+			<div className='flex flex-col items-center mt-2 p-5'>
+				<h1>Homepage</h1>
+				<div className='grid grid-cols-2 gap-4 w-full '>
+					<img src={bubbleteaImage} className='' alt='' />
+
+					<div className='flex flex-col '>
+						{stores.map((store: any) => (
+							<Card key={store.id} className='w-88 mt-4 p-4'>
+								<CardHeader>
+									<CardTitle>{store.name}</CardTitle>
+								</CardHeader>
+								<CardContent>
+									<p>{store.description}</p>
+								</CardContent>
+							</Card>
+						))}
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 }

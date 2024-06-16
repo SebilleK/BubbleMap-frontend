@@ -8,10 +8,12 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 // React Router
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import About from './components/AboutPage';
 import Login from './components/LoginPage';
 import Home from './components/HomePage';
+import Register from './components/RegisterPage';
+import Profile from './components/ProfilePage';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
@@ -19,9 +21,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 			<Router>
 				<Routes>
 					<Route path='/' element={<App />} />
+					<Route path='/home' element={<Home />} />
 					<Route path='/about' element={<About />} />
 					<Route path='/login' element={<Login />} />
-					<Route path='/home' element={<Home />} />
+					<Route path='/register' element={<Register />} />
+					<Route path='/profile' element={<Profile />} />
 				</Routes>
 			</Router>
 		</Provider>
