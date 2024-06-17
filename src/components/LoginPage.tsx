@@ -1,4 +1,6 @@
 import Navbar from './Navbar';
+import Footer from './Footer';
+import bubbleteaImage from '../assets/bubbletea.jpg';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -23,7 +25,7 @@ export default function Login() {
 		try {
 			const response = await axiosInstance.post('/users/login', { email, password });
 			console.log('login successful');
-			// console.log(response.data);
+			console.log(response.data);
 			dispatch(login({ id: response.data.user.id, username: response.data.user.username, email: response.data.user.email, admin: response.data.user.admin }));
 			console.log('login state set successfully');
 			console.log('redirecting to home page...');
@@ -35,9 +37,9 @@ export default function Login() {
 	};
 
 	return (
-		<div className='bg-gray-100'>
+		<div className='bg-cover bg-center h-screen' style={{ backgroundImage: `url(${bubbleteaImage})` }}>
 			<Navbar />
-			<div className='flex flex-col items-center mt-24 p-24'>
+			<div className='flex flex-col items-center mt-20 p-20'>
 				<Card className='mx-auto max-w-sm'>
 					<CardHeader>
 						<CardTitle className='text-2xl'>Login</CardTitle>
@@ -68,6 +70,8 @@ export default function Login() {
 					</CardContent>
 				</Card>
 			</div>
+
+			<Footer />
 		</div>
 	);
 }

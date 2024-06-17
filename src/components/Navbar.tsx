@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../store/authSlice';
 import { Button } from './ui/button';
-import bubblemapLogo from '../assets/bubblemap-icon.png';
+
+import bubblemapLogo from '../assets/bubbletea-icon-black.png';
 
 export default function Navbar() {
 	const dispatch = useDispatch();
@@ -27,30 +28,30 @@ export default function Navbar() {
 
 	return (
 		<nav className='flex flex-col items-center justify-center justify-items-center bg-white p-2 shadow'>
-			<div className='flex flex-row items-center justify-center gap-4 text-2xl'>
+			<div className='flex flex-row items-center justify-center gap-4 text-2xl p-2'>
 				<img src={bubblemapLogo} alt='Bubblemap Icon' />
-				<h1 className='text-yellow-800 font-mono font-bold'>BubbleMap</h1>
+				<h1 className='font-mono font-bold'>BubbleMap</h1>
 			</div>
 
-			<ul className='flex flex-row gap-4'>
+			<ul className='p-2 flex flex-row gap-4'>
 				<li>
-					<a className='text-red-300 hover:text-yellow-800 hover:underline hover:underline-offset-4 hover:decoration-2 hover:decoration-red-300'>
+					<a className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '>
 						<Link to='/home'>Home</Link>
 					</a>
 				</li>
 				<li>
-					<a className='text-red-300 hover:text-yellow-800 hover:underline hover:underline-offset-4 hover:decoration-2 hover:decoration-red-300'>
+					<a className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '>
 						<Link to='/about'>About</Link>
 					</a>
 				</li>
 				{!isLoggedIn && (
 					<>
-						<a className='text-red-300 hover:text-yellow-800 hover:underline hover:underline-offset-4 hover:decoration-2 hover:decoration-red-300'>
+						<a className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '>
 							<li>
 								<Link to='/login'>Login</Link>
 							</li>
 						</a>
-						<a className='text-red-300 hover:text-yellow-800 hover:underline hover:underline-offset-4 hover:decoration-2 hover:decoration-red-300'>
+						<a className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '>
 							<li>
 								<Link to='/register'>Register</Link>
 							</li>
@@ -59,14 +60,16 @@ export default function Navbar() {
 				)}
 				{isLoggedIn && (
 					<>
-						<a className='text-red-300 hover:text-yellow-800 hover:underline hover:underline-offset-4 hover:decoration-2 hover:decoration-red-300'>
+						<a className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '>
 							<li>
 								<Link to='/profile'>Profile</Link>
 							</li>
 						</a>
-						<a className='text-red-300 hover:text-yellow-800 hover:underline hover:underline-offset-4 hover:decoration-2 hover:decoration-red-300'>
+						<a className='underline text-red-300 hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '>
 							<li>
-								<Button onClick={handleLogout}>Logout</Button>
+								<Button className='h-6' onClick={handleLogout}>
+									Logout
+								</Button>
 							</li>
 						</a>
 					</>

@@ -1,4 +1,5 @@
 import Navbar from './Navbar';
+import Footer from './Footer';
 import axiosInstance from '../api/axiosInstance';
 import { useEffect, useState } from 'react';
 import bubbleteaImage from '../assets/bubbletea.jpg';
@@ -19,27 +20,26 @@ export default function Home() {
 	}, []);
 
 	return (
-		<div className='bg-gray-100'>
+		<div className='bg-cover bg-center h-screen' style={{ backgroundImage: `url(${bubbleteaImage})` }}>
 			<Navbar />
 			<div className='flex flex-col items-center mt-2 p-5'>
-				<h1>Homepage</h1>
-				<div className='grid grid-cols-2 gap-4 w-full '>
-					<img src={bubbleteaImage} className='' alt='' />
+				<h1>Stores List</h1>
 
-					<div className='flex flex-col '>
-						{stores.map((store: any) => (
-							<Card key={store.id} className='w-88 mt-4 p-4'>
-								<CardHeader>
-									<CardTitle>{store.name}</CardTitle>
-								</CardHeader>
-								<CardContent>
-									<p>{store.description}</p>
-								</CardContent>
-							</Card>
-						))}
-					</div>
+				<div className='flex flex-col '>
+					{stores.map((store: any) => (
+						<Card key={store.id} className='w-88 mt-4 p-4'>
+							<CardHeader>
+								<CardTitle>{store.name}</CardTitle>
+							</CardHeader>
+							<CardContent>
+								<p>{store.description}</p>
+							</CardContent>
+						</Card>
+					))}
 				</div>
 			</div>
+
+			<Footer />
 		</div>
 	);
 }

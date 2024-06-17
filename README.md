@@ -31,13 +31,13 @@ See **src/api/axiosInstance.ts** to set correct URL for the backend.
 **Implemented:**
 
 - Users can create an account and login with it (or an existing one in the db)
-- Logged in users have access to their profile
-- Logout works by eliminating the authCookie set by the backend for Authentication purposes (and setting state as logged out for UI changes)
+- Logged in users have access to their profile and can update their personal info
+- Profile page has user reviews
 
 **To implement:**
 
-- Users can update their own info on Profile page
 - Browsing reviews per store (and adding reviews)
-- Profile page has user reviews (which are able to be edited)
+- User reviews are editable
 - Styling changes to all pages
+- Better Redux use (to avoid more requests than necessary)
 - Implement the Homepage map

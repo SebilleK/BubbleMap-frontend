@@ -1,4 +1,6 @@
 import Navbar from './Navbar';
+import Footer from './Footer';
+import bubbleteaImage from '../assets/bubbletea.jpg';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -56,9 +58,9 @@ export default function Register() {
 	};
 
 	return (
-		<div className='bg-gray-100'>
+		<div className='bg-cover bg-center h-screen' style={{ backgroundImage: `url(${bubbleteaImage})` }}>
 			<Navbar />
-			<div className='flex flex-col items-center mt-10 p-24'>
+			<div className='flex flex-col items-center mt-4 p-24'>
 				<Card className='mx-auto max-w-sm'>
 					<CardHeader>
 						<CardTitle className='text-xl'>Sign Up</CardTitle>
@@ -69,19 +71,19 @@ export default function Register() {
 							<div className='grid gap-4'>
 								<div className='grid gap-2'>
 									<Label htmlFor='username'>Username</Label>
-									<Input id='username' placeholder='edelgard3' value={username} onChange={e => setUsername(e.target.value)} required />
+									<Input id='username' placeholder='edelgard3' value={username} onChange={e => setUsername(e.target.value)} autoComplete='on' required />
 								</div>
 								<div className='grid gap-2'>
 									<Label htmlFor='email'>Email</Label>
-									<Input id='email' type='email' placeholder='e@example.com' value={email} onChange={e => setEmail(e.target.value)} required />
+									<Input id='email' type='email' placeholder='e@example.com' value={email} onChange={e => setEmail(e.target.value)} autoComplete='on' required />
 								</div>
 								<div className='grid gap-2'>
 									<Label htmlFor='password'>Password</Label>
-									<Input id='password' type='password' value={password} onChange={e => setPassword(e.target.value)} placeholder='********' required />
+									<Input id='password' type='password' value={password} onChange={e => setPassword(e.target.value)} placeholder='********' autoComplete='on' required />
 								</div>
 								<div className='grid gap-2'>
 									<Label htmlFor='password-repeat'> Confirm Password</Label>
-									<Input id='password-repeat' type='password' value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} placeholder='********' required />
+									<Input id='password-repeat' type='password' value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} placeholder='********' autoComplete='on' required />
 								</div>
 								<Button type='submit' className='w-full'>
 									Create an account
@@ -97,6 +99,8 @@ export default function Register() {
 					</form>
 				</Card>
 			</div>
+
+			<Footer />
 		</div>
 	);
 }
