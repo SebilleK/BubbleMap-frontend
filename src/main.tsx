@@ -20,7 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 		<Provider store={store}>
 			<Router>
 				<Routes>
-					<Route path='/' element={<App />} />
+					<Route path='/' element={<Home />} />
 					<Route path='/home' element={<Home />} />
 					<Route path='/about' element={<About />} />
 					<Route path='/login' element={<Login />} />

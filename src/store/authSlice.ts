@@ -11,7 +11,7 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-	isLoggedIn: false,
+	isLoggedIn: localStorage.getItem('user') ? true : false,
 	user: null,
 };
 
@@ -23,10 +23,12 @@ const authSlice = createSlice({
 			console.log(action.payload);
 			state.isLoggedIn = true;
 			state.user = action.payload;
+			localStorage.setItem('user', JSON.stringify(action.payload));
 		},
 		logout: state => {
 			state.isLoggedIn = false;
 			state.user = null;
+			localStorage.removeItem('user');
 		},
 	},
 });

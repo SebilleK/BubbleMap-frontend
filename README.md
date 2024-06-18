@@ -28,16 +28,32 @@ See **src/api/axiosInstance.ts** to set correct URL for the backend.
 
 ---
 
+Non-comprehensive done and to-do list
+
 **Implemented:**
 
 - Users can create an account and login with it (or an existing one in the db)
 - Logged in users have access to their profile and can update their personal info
-- Profile page has user reviews
+- Profile page has user reviews and they are also editable
 
 **To implement:**
 
-- Browsing reviews per store (and adding reviews)
-- User reviews are editable
-- Styling changes to all pages
-- Better Redux use (to avoid more requests than necessary)
+**General optimization**
+
+- Close editing menus on submit (profile page)
+- Better Redux use. Add slices and actions for updating and relying on the local state instead of fetching data from the backend all the time.
+- Better modularity: add utils functions for common requests
+
+**Homepage**
+
 - Implement the Homepage map
+- Browsing reviews per store (and adding reviews)
+
+**Styling optimization**
+
+- Navbar overhaul
+- Footer can't compromise responsive?
+- Nicer color scheme
+- Remove the background image
+- Add a theme switcher for dark theme
+- Better layout on profile page

@@ -1,4 +1,5 @@
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
+import Reviews from './ReviewsOnProfile';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
@@ -11,20 +12,19 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '@/api/axiosInstance';
 
-import { useEffect } from 'react';
-
 import Navbar from './Navbar';
 import Footer from './Footer';
 
 export default function Profile() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const user = useSelector((state: any) => state.auth.user);
 
-	const [username, setUsername] = useState(user.username || '');
-	const [email, setEmail] = useState(user.email || '');
+	const user = JSON.parse(localStorage.getItem('user')!); // useSelector((state: any) => state.auth.user);
+
+	const [username, setUsername] = useState('');
+	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [reviews, setReviews] = useState([]);
+
 	const handleUserUpdate = async (event: React.FormEvent) => {
 		event.preventDefault();
 
@@ -48,19 +48,6 @@ export default function Profile() {
 			console.error('error while updating user: ', error);
 		}
 	};
-
-	// get user reviews once
-	useEffect(() => {
-		axiosInstance
-			.get(`/reviews/all/${user.id}`)
-			.then(response => {
-				setReviews(response.data);
-				console.log(response.data);
-			})
-			.catch(error => {
-				console.error(error);
-			});
-	}, []);
 
 	return (
 		<div>
@@ -111,21 +98,8 @@ export default function Profile() {
 					</PopoverContent>
 				</Popover>
 			</div>
-			<h1 className='m-4 text-2xl font-bold'>Reviews:</h1>
 
-			{reviews.length === 0 ? (
-				<p>No reviews yet</p>
-			) : (
-				<div className='flex items-start gap-2 m-4'>
-					{reviews.map((review: any) => (
-						<Card key={review.id} className='p-4'>
-							<p>Rating: {review.rating}</p>
-							<p> {review.reviewText}</p>
-							<p>Store ID: {review.storeId}</p>
-						</Card>
-					))}
-				</div>
-			)}
+			<Reviews />
 
 			<Footer />
 		</div>
