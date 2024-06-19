@@ -12,6 +12,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '@/api/axiosInstance';
 
+import { Edit } from 'lucide-react';
+
 import Navbar from './Navbar';
 import Footer from './Footer';
 
@@ -52,51 +54,63 @@ export default function Profile() {
 	return (
 		<div>
 			<Navbar />
-			<div className='flex flex-col items-center gap-2 m-8'>
+
+			<div className='flex flex-col items-center gap-2 m-4'>
+				<h1 className='m-4 text-2xl font-bold'>Profile:</h1>
 				<Card className='mx-auto w-96 p-10'>
+					<Popover>
+						<PopoverTrigger>
+							<Button>
+								<Edit />
+							</Button>
+						</PopoverTrigger>
+						<PopoverContent>
+							<form onSubmit={handleUserUpdate}>
+								<div className='grid gap-4'>
+									<div className='space-y-2'>
+										<h4 className='font-medium leading-none'>Personal Info</h4>
+										<p className='text-sm text-muted-foreground'>Edit your username, email, and/or password.</p>
+									</div>
+									<div className='grid gap-2'>
+										<div className='grid grid-cols-3 items-center gap-4'>
+											<Label htmlFor='width'>Username</Label>
+											<Input id='username' type='text' value={username} onChange={e => setUsername(e.target.value)} className='col-span-2 h-8' />
+										</div>
+										<div className='grid grid-cols-3 items-center gap-4'>
+											<Label htmlFor='maxWidth'>Email</Label>
+											<Input id='email' type='email' value={email} onChange={e => setEmail(e.target.value)} className='col-span-2 h-8' />
+										</div>
+										<div className='grid grid-cols-3 items-center gap-4'>
+											<Label htmlFor='height'>Password</Label>
+											<Input id='password' type='password' value={password} onChange={e => setPassword(e.target.value)} className='col-span-2 h-8' />
+										</div>
+									</div>
+									<Button type='submit'>Save changes</Button>
+								</div>
+							</form>
+						</PopoverContent>
+					</Popover>
 					<CardHeader>
 						<CardTitle>{user.username}</CardTitle>
 						<CardDescription className='text-lg'>
 							Hello, {user.username}! Welcome to your profile.
 							<CardContent className='p-4 mt-4'>
-								<p>ID: {user.id}</p>
-								<p>Username: {user.username}</p>
-								<p>Email: {user.email}</p>
-								<p>Permissions: {user.admin ? 'Admin' : 'User'}</p>
+								<p>
+									<b>ID:</b> {user.id}
+								</p>
+								<p>
+									<b>Username:</b> {user.username}
+								</p>
+								<p>
+									<b>Email:</b> {user.email}
+								</p>
+								<p>
+									<b>Permissions:</b> {user.admin ? 'Admin' : 'User'}
+								</p>
 							</CardContent>
 						</CardDescription>
 					</CardHeader>
 				</Card>
-				<Popover>
-					<PopoverTrigger>
-						<Button>Edit Profile</Button>
-					</PopoverTrigger>
-					<PopoverContent>
-						<form onSubmit={handleUserUpdate}>
-							<div className='grid gap-4'>
-								<div className='space-y-2'>
-									<h4 className='font-medium leading-none'>Personal Info</h4>
-									<p className='text-sm text-muted-foreground'>Edit your username, email, and/or password.</p>
-								</div>
-								<div className='grid gap-2'>
-									<div className='grid grid-cols-3 items-center gap-4'>
-										<Label htmlFor='width'>Username</Label>
-										<Input id='username' type='text' value={username} onChange={e => setUsername(e.target.value)} className='col-span-2 h-8' />
-									</div>
-									<div className='grid grid-cols-3 items-center gap-4'>
-										<Label htmlFor='maxWidth'>Email</Label>
-										<Input id='email' type='email' value={email} onChange={e => setEmail(e.target.value)} className='col-span-2 h-8' />
-									</div>
-									<div className='grid grid-cols-3 items-center gap-4'>
-										<Label htmlFor='height'>Password</Label>
-										<Input id='password' type='password' value={password} onChange={e => setPassword(e.target.value)} className='col-span-2 h-8' />
-									</div>
-								</div>
-								<Button type='submit'>Save changes</Button>
-							</div>
-						</form>
-					</PopoverContent>
-				</Popover>
 			</div>
 
 			<Reviews />
