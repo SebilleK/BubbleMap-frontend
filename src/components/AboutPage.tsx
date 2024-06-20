@@ -48,7 +48,7 @@ export default function About() {
 							</a>
 						</p>
 						<p className=''>
-							Login/Register pages background photo by{' '}
+							About/Login/Register pages background photo by{' '}
 							<a
 								className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2'
 								href='https://unsplash.com/photos/clear-plastic-container-dHQQv-BKTjo'

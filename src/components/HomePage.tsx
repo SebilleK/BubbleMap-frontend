@@ -1,5 +1,6 @@
 import Navbar from './Navbar';
 import Footer from './Footer';
+import MapComponent from './Map';
 import { useEffect } from 'react';
 import { getStores } from '@/api/utils/requests';
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,6 +22,8 @@ export default function Home() {
 			<Navbar />
 			<div className='flex flex-col items-center mt-2 p-5'>
 				<h1>Stores List</h1>
+
+				<MapComponent />
 
 				<div className='flex flex-col '>
 					{stores.map((store: any) => (

@@ -8,7 +8,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import axiosInstance from '../api/axiosInstance';
 import { useState } from 'react';
 import { registerUser } from '@/api/utils/requests';
 
