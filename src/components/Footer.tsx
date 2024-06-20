@@ -1,33 +1,21 @@
+import { Github } from 'lucide-react';
+
 export default function Footer() {
 	return (
-		<footer className='w-full bg-gray-200 flex flex-col items-center text-center py-2.5 bottom-0 left-0  '>
-			<nav className=' flex flex-col md:flex-row gap-4'>
-				<h3 className='font-mono font-bold'>Attribution</h3>
-				<ul className='flex gap-4'>
-					<li>
-						<a className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 ' href='https://www.flaticon.com/free-icons/bubble-tea' target='_blank'>
-							Bubble tea icons created by Luvdat - Flaticon
-						</a>
-					</li>
-					<li>
-						<a
-							className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '
-							href='https://unsplash.com/photos/clear-plastic-container-dHQQv-BKTjo'
-							target='_blank'
-						>
-							Photo by Orimi Protograph on Unsplash
-						</a>
-					</li>
-				</ul>
-				<h3 className='font-mono font-bold'>Learn more</h3>
-				<ul>
-					<li>
-						<a className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 ' href='https://github.com/SebilleK/BubbleMap' target='_blank'>
-							Github repository
-						</a>
-					</li>
-				</ul>
-			</nav>
+		<footer className='body-font shadow border-t bg-white mx-auto rounded-t-lg'>
+			<div className='container mx-auto px-4 py-2 mx-auto flex items-center sm:flex-row flex-col'>
+				<p className='text-sm text-500 sm:ml-4 sm:pl-4 sm:py-2 sm:mt-0 mt-4'>
+					BubbleMap — made by
+					<a href='https://github.com/SebilleK' className='hover:text-green-800 ml-1' rel='noopener noreferrer' target='_blank'>
+						@SebilleK
+					</a>
+				</p>
+				<span className='inline-flex sm:ml-auto sm:mt-0 mt-4  justify-center sm:justify-start'>
+					<a className='ml-3 text-gray-500 hover:text-green-800' href='https://github.com/SebilleK/BubbleMap' rel='noopener noreferrer' target='_blank'>
+						<Github />
+					</a>
+				</span>
+			</div>
 		</footer>
 	);
 }

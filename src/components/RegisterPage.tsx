@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../api/axiosInstance';
 import { useState } from 'react';
+import { registerUser } from '@/api/utils/requests';
 
 export default function Register() {
 	const dispatch = useDispatch();
@@ -43,9 +44,9 @@ export default function Register() {
 		console.log('trying to register...');
 
 		try {
-			const response = await axiosInstance.post('/users/register', { username, email, password });
+			const response = await registerUser(username, email, password);
 			console.log('registration successful: account created');
-			console.log(response.data);
+			console.log(response);
 			console.log('redirecting to login page...');
 			navigate('/login');
 			console.log('redirected successfully');
@@ -60,10 +61,10 @@ export default function Register() {
 	return (
 		<div className='bg-cover bg-center h-screen' style={{ backgroundImage: `url(${bubbleteaImage})` }}>
 			<Navbar />
-			<div className='flex flex-col items-center mt-4 p-24'>
-				<Card className='mx-auto max-w-sm'>
+			<div className='flex flex-col items-center p-24 my-1'>
+				<Card className='mx-auto max-w-sm mb-2.5'>
 					<CardHeader>
-						<CardTitle className='text-xl'>Sign Up</CardTitle>
+						<CardTitle className='text-xl'>Register</CardTitle>
 						<CardDescription>Enter your information to create an account</CardDescription>
 					</CardHeader>
 					<form onSubmit={handleRegister}>

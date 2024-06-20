@@ -1,26 +1,23 @@
 import Navbar from './Navbar';
 import Footer from './Footer';
-import axiosInstance from '../api/axiosInstance';
-import { useEffect, useState } from 'react';
-import bubbleteaImage from '../assets/bubbletea.jpg';
-
+import { useEffect } from 'react';
+import { getStores } from '@/api/utils/requests';
+import { useDispatch, useSelector } from 'react-redux';
+import { setStores } from '@/store/storesSlice';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 export default function Home() {
-	const [stores, setStores] = useState([]);
+	const dispatch = useDispatch();
+
+	const stores = useSelector((state: any) => state.stores.stores);
 
 	useEffect(() => {
-		axiosInstance
-			.get('/stores')
-			.then(response => {
-				setStores(response.data);
-			})
-			.catch(error => {
-				console.error(error);
-			});
+		getStores().then((response: any) => {
+			dispatch(setStores(response));
+		});
 	}, []);
 
 	return (
-		<div className='bg-cover bg-center h-screen' style={{ backgroundImage: `url(${bubbleteaImage})` }}>
+		<div>
 			<Navbar />
 			<div className='flex flex-col items-center mt-2 p-5'>
 				<h1>Stores List</h1>
@@ -39,7 +36,7 @@ export default function Home() {
 				</div>
 			</div>
 
-			<Footer />
+			{/* 	<Footer /> */}
 		</div>
 	);
 }

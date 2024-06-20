@@ -1,4 +1,34 @@
 import axiosInstance from '../axiosInstance';
+
+//? USERS
+
+//? Login
+export async function loginUser(email: string, password: string) {
+	console.log('logging in...');
+	try {
+		const response = await axiosInstance.post('/users/login', { email, password });
+		console.log('login successful, returning response...');
+		return response.data;
+	} catch (error) {
+		console.log('there was an error while logging in, returning error...');
+		console.error(error);
+	}
+}
+
+//? Register 
+export async function registerUser(username: string, email: string, password: string) {
+	console.log('registering...');
+	try {
+		const response = await axiosInstance.post('/users/register', { username, email, password });
+		console.log('registration successful, returning response...');
+		return response.data;
+	} catch (error) {
+		console.log('there was an error while registering, returning error...');
+		console.error(error);
+	}
+}
+
+//? STORES
 export async function getStores() {
 	console.log('fetching stores...');
 	try {

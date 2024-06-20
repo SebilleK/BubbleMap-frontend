@@ -12,6 +12,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
+import { loginUser } from '@/api/utils/requests';
+
 export default function Login() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -20,13 +22,17 @@ export default function Login() {
 
 	const handleLogin = async (event: React.FormEvent) => {
 		event.preventDefault();
-		console.log('trying to login');
+		console.log('trying to login: component');
 
 		try {
-			const response = await axiosInstance.post('/users/login', { email, password });
+			/* const response = await axiosInstance.post('/users/login', { email, password });
 			console.log('login successful');
-			console.log(response.data);
-			dispatch(login({ id: response.data.user.id, username: response.data.user.username, email: response.data.user.email, admin: response.data.user.admin }));
+			console.log(response.data); */
+
+			const response = await loginUser(email, password);
+			console.log(response);
+			console.log('login successful: component');
+			dispatch(login({ id: response.user.id, username: response.user.username, email: response.user.email, admin: response.user.admin }));
 			console.log('login state set successfully');
 			console.log('redirecting to home page...');
 			navigate('/home');
@@ -39,8 +45,8 @@ export default function Login() {
 	return (
 		<div className='bg-cover bg-center h-screen' style={{ backgroundImage: `url(${bubbleteaImage})` }}>
 			<Navbar />
-			<div className='flex flex-col items-center mt-20 p-20'>
-				<Card className='mx-auto max-w-sm'>
+			<div className='flex flex-col items-center my-44'>
+				<Card className='mx-auto max-w-sm mb-2.5'>
 					<CardHeader>
 						<CardTitle className='text-2xl'>Login</CardTitle>
 						<CardDescription>Login below with your registered email and password</CardDescription>

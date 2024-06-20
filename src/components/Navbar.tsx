@@ -27,31 +27,31 @@ export default function Navbar() {
 	};
 
 	return (
-		<nav className='flex flex-col items-center justify-center justify-items-center bg-white p-2 shadow'>
+		<nav className='flex flex-col items-center justify-center justify-items-center bg-white p-1 shadow w-1/2 mx-auto rounded-b-lg'>
 			<div className='flex flex-row items-center justify-center gap-4 text-2xl p-2'>
 				<img src={bubblemapLogo} alt='Bubblemap Icon' />
-				<h1 className='font-mono font-bold'>BubbleMap</h1>
+				<h1 className='font-mono font-bold text-3xl'>BubbleMap</h1>
 			</div>
 
-			<ul className='p-2 flex flex-row gap-4'>
+			<ul className='p-2 flex flex-row gap-4 text-xl'>
 				<li>
-					<a className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '>
+					<a className='hover:text-green-800 hover:underline hover:text-xl hover:underline-offset-4 hover:animate-in  hover:decoration-2 '>
 						<Link to='/home'>Home</Link>
 					</a>
 				</li>
 				<li>
-					<a className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '>
+					<a className='hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '>
 						<Link to='/about'>About</Link>
 					</a>
 				</li>
 				{!isLoggedIn && (
 					<>
-						<a className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '>
+						<a className='hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '>
 							<li>
 								<Link to='/login'>Login</Link>
 							</li>
 						</a>
-						<a className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '>
+						<a className=' hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '>
 							<li>
 								<Link to='/register'>Register</Link>
 							</li>
@@ -60,14 +60,14 @@ export default function Navbar() {
 				)}
 				{isLoggedIn && (
 					<>
-						<a className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '>
+						<a className=' hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '>
 							<li>
 								<Link to='/profile'>Profile</Link>
 							</li>
 						</a>
-						<a className='underline text-red-300 hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '>
+						<a className=' text-red-300 hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '>
 							<li>
-								<Button className='h-6' onClick={handleLogout}>
+								<Button className='h-6 text-lg py-4' onClick={handleLogout}>
 									Logout
 								</Button>
 							</li>
