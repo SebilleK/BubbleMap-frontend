@@ -53,10 +53,51 @@ You can disable it by removing the <React.StrictMode> tag in **main.tsx**:
 
 - Source: https://support.boldreports.com/kb/article/12888/how-to-prevent-methods-from-being-called-twice-in-react
 
-4. As of now, the Map component is a bit messy. It needs to be adapted to better adhere to React's way of doing things. Either way, these were important resources in implementing it in its barebones state:
+4. Open Layers was used for the dynamic map in the homepage. I had a bit of trouble setting it up, so I'll leave some tips below.
+
+```bash
+# in "Map.tsx" | src/components
+
+# import the OL styles to avoid behavior issues
+import 'ol/ol.css';
+
+# (...)
+
+# don't manipulate the DOM directly: useRef hook
+const mapRef = useRef<HTMLDivElement | null>(null);
+
+# (...)
+
+# inside useEffect hook....
+# set the target of the mapObj to the map element
+mapObj.setTarget(mapRef.current);
+
+
+# set the target as null again: this avoids issues when unmounting
+return () => {
+	mapObj.setTarget(null!);
+}
+
+# (...)
+
+# set width and height directly to the map element!
+return <div id='map' style={{ width: '100%', height: '500px' }} ref={mapRef}></div>;
+```
+
+Official OL website:
+
+- https://openlayers.org/
+
+The below resources helped a lot setting this up, and I would recommend checking them out:
+
+**For doing a barebones map initially**
 
 - https://mxd.codes/articles/how-to-create-a-web-map-with-open-layers-and-react
 - https://openlayers.org/en/latest/examples/popup.html
+
+**For implementing it as a React component adequately**
+
+- https://medium.com/swlh/how-to-incorporate-openlayers-maps-into-react-65b411985744
 
 ---
 
@@ -68,7 +109,7 @@ Non-comprehensive done and to-do list
 - Logged in users have access to their profile and can update their personal info
 - Profile page has user reviews and they are also editable
 - Better modularity: centralized API requests + slices/actions use for managing App state
-- Homepage has a map that displays all Stores as markers, they are clickable (buggy for now)
+- Homepage has a map that displays all Stores as markers, they are clickable
 
 **To implement:**
 
@@ -76,7 +117,6 @@ Non-comprehensive done and to-do list
 
 - Close editing menus on submit (profile page)
 - Remove DOM nesting errors?
-- Fix direct DOM manipulation on Map component, needs a React approach. Fix marker bugs..
 
 **Homepage**
 
