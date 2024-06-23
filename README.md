@@ -97,7 +97,8 @@ The below resources helped a lot setting this up, and I would recommend checking
 
 **For implementing it as a React component adequately**
 
-- https://medium.com/swlh/how-to-incorporate-openlayers-maps-into-react-65b411985744
+- https://medium.com/@pyj0695/how-to-use-openlayers-in-react-e53c52e0ce70
+- https://medium.com/swlh/how-to-incorporate-openlayers-maps-into-react-65b411985744 (premium only, source of the previous article)
 
 ---
 

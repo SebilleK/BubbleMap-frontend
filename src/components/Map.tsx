@@ -2,7 +2,7 @@ import 'ol/ol.css';
 import { useEffect, useRef } from 'react';
 import { Map, View } from 'ol';
 import { Point } from 'ol/geom';
-import { Feature } from 'ol';
+import { Feature, Overlay } from 'ol';
 import { Tile } from 'ol/layer';
 import { OSM } from 'ol/source';
 import Style from 'ol/style/Style';
@@ -10,6 +10,13 @@ import Icon from 'ol/style/Icon';
 import VectorSource from 'ol/source/Vector.js';
 import VectorLayer from 'ol/layer/Vector';
 import markerImage from '../assets/cup-soda-png.png';
+import HomepageNavbar from './HomepageNavbar';
+
+import StoreAlert from './StoreAlert';
+
+import { setAlert, setStoreInfo } from '@/store/storesSlice';
+
+import { useDispatch } from 'react-redux';
 
 import { fromLonLat } from 'ol/proj';
 
@@ -17,7 +24,9 @@ import { fromLonLat } from 'ol/proj';
 import { useSelector } from 'react-redux';
 
 export default function MapComponent() {
+	const dispatch = useDispatch();
 	const stores = useSelector((state: any) => state.stores.stores);
+	const alertNotif = useSelector((state: any) => state.stores.alert);
 	const mapRef = useRef<HTMLDivElement | null>(null);
 
 	// components NEEDS to mount before map is rendered
@@ -33,6 +42,8 @@ export default function MapComponent() {
 			return new Feature({
 				geometry: new Point(coords),
 				storeName: store.name,
+				storeAddress: store.address,
+				storeDescription: store.description,
 				storeId: store.id,
 			});
 		});
@@ -52,9 +63,12 @@ export default function MapComponent() {
 		//? add marker features to vector source
 		vectorSource.addFeatures(markerFeatures);
 
-		//? map object
+		//? overlay: navbar
+
+		//? center coordinates
 		const lisbonCoordinates = fromLonLat([-9.139, 38.722]);
 
+		//? map object
 		const mapObj = new Map({
 			view: new View({
 				center: lisbonCoordinates,
@@ -71,7 +85,14 @@ export default function MapComponent() {
 			});
 
 			if (feature) {
-				alert(feature.get('storeName'));
+				/* alert(feature.get('storeName') + '\n' + feature.get('storeAddress') + '\n' + feature.get('storeDescription')); */
+				const storeName = feature.get('storeName');
+				const storeAddress = feature.get('storeAddress');
+				const storeDescription = feature.get('storeDescription');
+
+				dispatch(setStoreInfo({ storeName, storeAddress, storeDescription }));
+
+				dispatch(setAlert(true));
 			}
 		});
 
@@ -89,5 +110,14 @@ export default function MapComponent() {
 		};
 	}, [stores]);
 
-	return <div id='map' style={{ width: '100%', height: '500px' }} ref={mapRef}></div>;
+	return (
+		<>
+			{/* {alertNotif && <StoreAlert />} */}
+
+			<HomepageNavbar />
+
+			<div id='map' style={{ width: '100%', height: '100vh' }} ref={mapRef}></div>
+			{alertNotif && <StoreAlert />}
+		</>
+	);
 }
