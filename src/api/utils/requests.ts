@@ -15,7 +15,7 @@ export async function loginUser(email: string, password: string) {
 	}
 }
 
-//? Register 
+//? Register
 export async function registerUser(username: string, email: string, password: string) {
 	console.log('registering...');
 	try {
@@ -56,11 +56,13 @@ export async function getReviews() {
 	}
 }
 
+//? Get all reviews of a store
+
 //? Get all reviews of a user
 export async function getAllReviewsOfUser(id: string) {
 	console.log('fetching all reviews of given user...');
 	try {
-		const response = await axiosInstance.get(`/reviews/all/${id}`);
+		const response = await axiosInstance.get(`/reviews/all/user/${id}`);
 		console.log('reviews by user fetched successfully, returning response...');
 		return response.data;
 	} catch (error) {

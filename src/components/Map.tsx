@@ -2,7 +2,7 @@ import 'ol/ol.css';
 import { useEffect, useRef } from 'react';
 import { Map, View } from 'ol';
 import { Point } from 'ol/geom';
-import { Feature, Overlay } from 'ol';
+import { Feature } from 'ol';
 import { Tile } from 'ol/layer';
 import { OSM } from 'ol/source';
 import Style from 'ol/style/Style';
@@ -86,11 +86,12 @@ export default function MapComponent() {
 
 			if (feature) {
 				/* alert(feature.get('storeName') + '\n' + feature.get('storeAddress') + '\n' + feature.get('storeDescription')); */
+				const storeId = feature.get('storeId');
 				const storeName = feature.get('storeName');
 				const storeAddress = feature.get('storeAddress');
 				const storeDescription = feature.get('storeDescription');
 
-				dispatch(setStoreInfo({ storeName, storeAddress, storeDescription }));
+				dispatch(setStoreInfo({ storeId, storeName, storeAddress, storeDescription }));
 
 				dispatch(setAlert(true));
 			}

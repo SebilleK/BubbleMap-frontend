@@ -100,6 +100,8 @@ The below resources helped a lot setting this up, and I would recommend checking
 - https://medium.com/@pyj0695/how-to-use-openlayers-in-react-e53c52e0ce70
 - https://medium.com/swlh/how-to-incorporate-openlayers-maps-into-react-65b411985744 (premium only, source of the previous article)
 
+5. To have the map occupy the entire homepage, I set the Navbar, Store Info and Review Info (displayed on marker click) as fixed elements/components (they are responsive though). This is simpler to me compared to setting them as permanent overlays on the Open Layers map instance (in the Map component).
+
 ---
 
 Non-comprehensive done and to-do list

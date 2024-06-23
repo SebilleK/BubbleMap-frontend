@@ -3,11 +3,15 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 interface ReviewState {
 	reviews: any;
 	userReviews: any;
+	storeReviews: any;
+	storeReviewsAlert: boolean;
 }
 
 const initialState: ReviewState = {
 	reviews: [],
 	userReviews: [],
+	storeReviews: [],
+	storeReviewsAlert: false,
 };
 
 const reviewSlice = createSlice({
@@ -27,9 +31,15 @@ const reviewSlice = createSlice({
 				state.userReviews[index] = action.payload;
 			}
 		},
+		setAlertStoreReviews: (state, action: PayloadAction<any>) => {
+			state.storeReviewsAlert = action.payload;
+		},
+		setStoreReviews: (state, action: PayloadAction<any>) => {
+			state.storeReviews = action.payload;
+		},
 	},
 });
 
-export const { setReviews, setUserReviews, updateUserReviews } = reviewSlice.actions;
+export const { setReviews, setUserReviews, updateUserReviews, setStoreReviews, setAlertStoreReviews } = reviewSlice.actions;
 
 export default reviewSlice.reducer;

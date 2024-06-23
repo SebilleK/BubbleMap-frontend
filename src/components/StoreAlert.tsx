@@ -4,34 +4,54 @@ import { setStoreInfo } from '@/store/storesSlice';
 
 import { Card, CardContent, CardFooter, CardTitle } from './ui/card';
 import { CircleX } from 'lucide-react';
+import { Button } from './ui/button';
+import { setAlertStoreReviews } from '@/store/reviewsSlice';
+import ReviewsAlert from './ReviewsAlert';
 
 export default function StoreAlert() {
 	const dispatch = useDispatch();
 	const storeInfo = useSelector((state: any) => state.stores.storeInfo);
+	const reviewInfo = useSelector((state: any) => state.reviews.storeReviewsAlert);
 
 	const closeInfo = () => {
 		dispatch(setAlert(false));
 		dispatch(setStoreInfo({}));
 	};
 
+	const reviewsInfo = () => {
+		console.log('setting reviews alert to positive...');
+
+		if (reviewInfo) {
+			dispatch(setAlertStoreReviews(false));
+		} else {
+			dispatch(setAlertStoreReviews(true));
+		}
+	};
+
 	return (
-		<div className='fixed bottom-10 left-1/4 transform -translate-x-1/2 w-full max-w-sm md:w-1/3 md:max-w-md lg:max-w-lg bg-white p-3 rounded shadow border'>
-			<Card>
-				<button className='p-2' onClick={closeInfo}>
-					<CircleX />
-				</button>
-				<div className='text-center mb-6'>
-					<CardTitle>{storeInfo.storeName}</CardTitle>
-				</div>
+		<>
+			<div className='fixed bottom-10 left-1/4 transform -translate-x-1/2 w-full max-w-sm md:w-1/3 md:max-w-md lg:max-w-lg bg-white p-3 rounded shadow border'>
+				<Card>
+					<button className='p-2' onClick={closeInfo}>
+						<CircleX />
+					</button>
+					<div className='text-center mb-6'>
+						<CardTitle>{storeInfo.storeName}</CardTitle>
+					</div>
 
-				<CardContent>
-					<p>{storeInfo.storeDescription}</p>
-				</CardContent>
+					<CardContent>
+						<p>{storeInfo.storeDescription}</p>
+					</CardContent>
 
-				<CardFooter>
-					<p>{storeInfo.storeAddress}</p>
-				</CardFooter>
-			</Card>
-		</div>
+					<CardFooter>
+						<p>{storeInfo.storeAddress}</p>
+					</CardFooter>
+					<div className='text-center mb-4'>
+						<Button onClick={reviewsInfo}>{reviewInfo ? 'Hide Reviews' : 'Show Reviews'}</Button>
+					</div>
+				</Card>
+			</div>
+			{reviewInfo && <ReviewsAlert />}
+		</>
 	);
 }
