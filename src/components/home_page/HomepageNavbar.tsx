@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { logout } from '../store/authSlice';
-import { Button } from './ui/button';
+import { logout } from '../../store/authSlice';
+import { Button } from '../ui/button';
 
-import bubblemapLogo from '../assets/bubbletea-icon-black.png';
+import bubblemapLogo from '../../assets/bubbletea-icon-black.png';
 
 export default function HomepageNavbar() {
 	const dispatch = useDispatch();

@@ -1,10 +1,10 @@
 // import { useSelector } from 'react-redux';
 import Reviews from './ReviewsOnProfile';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { Button } from './ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
+import { Button } from '../ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Label } from '@radix-ui/react-label';
-import { Input } from './ui/input';
+import { Input } from '../ui/input';
 
 import { useDispatch } from 'react-redux';
 import { logout } from '@/store/authSlice';
@@ -14,8 +14,8 @@ import axiosInstance from '@/api/axiosInstance';
 
 import { Edit } from 'lucide-react';
 
-import Navbar from './Navbar';
-import Footer from './Footer';
+import Navbar from '../Navbar';
+import Footer from '../Footer';
 
 export default function Profile() {
 	const dispatch = useDispatch();

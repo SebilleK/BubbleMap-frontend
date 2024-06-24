@@ -1,6 +1,6 @@
-import Navbar from './Navbar';
-import Footer from './Footer';
-import bubbleteaImage from '../assets/bubbletea.jpg';
+import Navbar from '../Navbar';
+import Footer from '../Footer';
+import bubbleteaImage from '../../assets/bubbletea.jpg';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';

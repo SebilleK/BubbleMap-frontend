@@ -119,7 +119,7 @@ Non-comprehensive done and to-do list
 
 **General optimization**
 
-- Close editing menus on submit (profile page)
+- Make alerts
 - Remove DOM nesting errors?
 
 **Homepage**

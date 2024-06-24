@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { setAlertStoreReviews } from '@/store/reviewsSlice';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Card } from './ui/card';
+import { Card } from '../ui/card';
 
 import { useEffect } from 'react';
 import { getAllReviewsOfStore } from '@/api/utils/requests';

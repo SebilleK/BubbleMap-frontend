@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Card } from './ui/card';
-import { Label } from './ui/label';
-import { Input } from './ui/input';
+import { Card } from '../ui/card';
+import { Label } from '../ui/label';
+import { Input } from '../ui/input';
 import { Edit } from 'lucide-react';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -65,7 +65,7 @@ export default function Reviews() {
 		}
 		if (reviewText.length < 10 || reviewText.length > 1000) {
 			console.log('invalid review text: please enter a review text with more than 10 characters and less than 1000 characters');
-			alert('Please enter a review text with less than 500 characters');
+			alert('Please enter a review text with more than 10 characters and less than 500 characters');
 			return;
 		}
 
@@ -89,6 +89,7 @@ export default function Reviews() {
 			const updatedReview = response;
 			dispatch(updateUserReviews(updatedReview));
 			console.log('review updated successfully in state');
+			alert('Review updated successfully!');
 		} catch (error) {
 			console.log('there was an error while updating the review');
 			console.error('error while updating review: ', error);

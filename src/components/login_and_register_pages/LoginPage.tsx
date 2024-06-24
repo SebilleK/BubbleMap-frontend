@@ -1,12 +1,12 @@
-import Navbar from './Navbar';
-import Footer from './Footer';
-import bubbleteaImage from '../assets/bubbletea.jpg';
+import Navbar from '../Navbar';
+import Footer from '../Footer';
+import bubbleteaImage from '../../assets/bubbletea.jpg';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../store/authSlice';
-import axiosInstance from '../api/axiosInstance';
+import { login } from '../../store/authSlice';
+import axiosInstance from '../../api/axiosInstance';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';

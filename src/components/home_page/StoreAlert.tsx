@@ -2,9 +2,9 @@ import { setAlert } from '@/store/storesSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { setStoreInfo } from '@/store/storesSlice';
 
-import { Card, CardContent, CardFooter, CardTitle } from './ui/card';
+import { Card, CardContent, CardFooter, CardTitle } from '../ui/card';
 import { CircleX } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import { setAlertStoreReviews } from '@/store/reviewsSlice';
 import ReviewsAlert from './ReviewsAlert';
 

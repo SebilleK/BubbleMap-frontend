@@ -9,7 +9,7 @@ import Style from 'ol/style/Style';
 import Icon from 'ol/style/Icon';
 import VectorSource from 'ol/source/Vector.js';
 import VectorLayer from 'ol/layer/Vector';
-import markerImage from '../assets/cup-soda-png.png';
+// import markerImage from '../../assets/cup-soda-png.png';
 import HomepageNavbar from './HomepageNavbar';
 
 import StoreAlert from './StoreAlert';

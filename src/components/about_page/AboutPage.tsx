@@ -1,8 +1,8 @@
-import Navbar from './Navbar';
-import Footer from './Footer';
-import bubbleteaImage from '../assets/bubbletea.jpg';
+import Navbar from '../Navbar';
+import Footer from '../Footer';
+import bubbleteaImage from '../../assets/bubbletea.jpg';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Card, CardContent, CardTitle } from './ui/card';
+import { Card, CardContent, CardTitle } from '../ui/card';
 export default function About() {
 	return (
 		<div className='bg-cover bg-center h-screen' style={{ backgroundImage: `url(${bubbleteaImage})` }}>

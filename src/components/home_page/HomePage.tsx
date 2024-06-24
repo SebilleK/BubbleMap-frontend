@@ -1,4 +1,3 @@
-
 import MapComponent from './Map';
 import { useEffect } from 'react';
 import { getStores } from '@/api/utils/requests';
