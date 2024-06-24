@@ -6,10 +6,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { registerUser } from '@/api/utils/requests';
+import { setAlertMessage, setAlert } from '@/store/authSlice';
+import AlertMessage from '../Alert';
 
 export default function Register() {
 	const dispatch = useDispatch();
@@ -20,6 +22,7 @@ export default function Register() {
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
 
+	const alertState = useSelector((state: any) => state.auth.alert);
 	const passwordChecker = (password: string, confirmPassword: string) => {
 		if (password === confirmPassword) {
 			return true;
@@ -35,7 +38,8 @@ export default function Register() {
 
 		if (!passwordChecker(password, confirmPassword)) {
 			console.log('passwords do not match');
-			alert('Password and confirm password do not match');
+			dispatch(setAlertMessage('Passwords do not match'));
+			dispatch(setAlert(true));
 
 			return;
 		}
@@ -44,22 +48,37 @@ export default function Register() {
 
 		try {
 			const response = await registerUser(username, email, password);
-			console.log('registration successful: account created');
-			console.log(response);
-			console.log('redirecting to login page...');
-			navigate('/login');
-			console.log('redirected successfully');
+			// console.log('registration underway...');
+
+			if (response && response.response && response.response.data && response.response.data.type) {
+				dispatch(setAlertMessage(response.response.data.on));
+				dispatch(setAlert(true));
+				return;
+			}
+
+			if (response && response.response && response.response.data && response.response.data.name) {
+				// if response is an error  (the following property would be present)
+				dispatch(setAlertMessage(response.response.data.message));
+				dispatch(setAlert(true));
+				return;
+			} else {
+				console.log(response);
+				console.log('redirecting to login page...');
+				navigate('/login');
+				console.log('redirected successfully');
+			}
 		} catch (error: any) {
 			console.error(error);
 			console.log('registration failed: account not created');
-			// message to use later
-			console.log(error.response.data.message);
+			dispatch(setAlertMessage('There was an error while creating your account. Please try again.'));
+			dispatch(setAlert(true));
 		}
 	};
 
 	return (
 		<div className='bg-cover bg-center h-screen' style={{ backgroundImage: `url(${bubbleteaImage})` }}>
 			<Navbar />
+			{alertState && <AlertMessage />}
 			<div className='flex flex-col items-center p-24 my-1'>
 				<Card className='mx-auto max-w-sm mb-2.5'>
 					<CardHeader>

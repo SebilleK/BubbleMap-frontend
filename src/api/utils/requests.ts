@@ -12,6 +12,7 @@ export async function loginUser(email: string, password: string) {
 	} catch (error) {
 		console.log('there was an error while logging in, returning error...');
 		console.error(error);
+		return error;
 	}
 }
 
@@ -25,6 +26,26 @@ export async function registerUser(username: string, email: string, password: st
 	} catch (error) {
 		console.log('there was an error while registering, returning error...');
 		console.error(error);
+		return error;
+	}
+}
+
+//? update a user
+
+export async function updateUser(id: string, username: string, email: string, password: string | undefined) {
+	console.log('updating user...');
+	try {
+		const response = await axiosInstance.put(`/users/${id}`, {
+			username: username,
+			email: email,
+			password: password,
+		});
+
+		return response as any;
+	} catch (error) {
+		console.log('there was an error while updating user, returning error...');
+		console.error(error);
+		return error;
 	}
 }
 

@@ -102,6 +102,36 @@ The below resources helped a lot setting this up, and I would recommend checking
 
 5. To have the map occupy the entire homepage, I set the Navbar, Store Info and Review Info (displayed on marker click) as fixed elements/components (they are responsive though). This is simpler to me compared to setting them as permanent overlays on the Open Layers map instance (in the Map component).
 
+6. Notes on error alerts
+
+Some error alerts are directly set on the frontend:
+
+```bash
+# example found on the ReviewsOnProfile.tsx component
+if (reviewText.length < 10 || reviewText.length > 1000) {
+	dispatch(setAlertMessage('Please enter a review text with more than 10 characters and less than 500 characters'));
+	dispatch(setAlert(true));
+	return;
+}
+```
+
+And others are set according to a dynamic message coming from the backend response. To do this I used additional checking in my try/catch blocks when making a request in a component and checked if the response has a certain property that only an error response would, to then set the error message according to it.
+
+It resulted in a bit of messy code, although it does work:
+
+```bash
+# example found in the registering function on the RegisterPage.tsx component
+if (response && response.response && response.response.data && response.response.data.name) {
+	dispatch(setAlertMessage(response.response.data.message));
+	dispatch(setAlert(true));
+	return;
+} else {
+	# proceed with sucessful registration stuff such as redirecting to login....
+}
+```
+
+The alert (boolean) and alertMessage (string) are in the authSlice.ts present in the store directory. Although not directly correlated, most of the alerts set are result of Login/Registering so it felt appropriate.
+
 ---
 
 Non-comprehensive done and to-do list
@@ -114,13 +144,14 @@ Non-comprehensive done and to-do list
 - Better modularity: centralized API requests + slices/actions use for managing App state
 - Homepage has a map that displays all Stores as markers, they are clickable
 - You can browse the reviews per store on the Homepage
+- Alerts: on Login (Unregistered email, Wrong password); on Register (Already existing username or email, Password(s) matching & password verifying); on Profile (Invalid reviews update, Invalid user info update)
 
 **To implement:**
 
 **General optimization**
 
-- Make alerts
 - Remove DOM nesting errors?
+- Some responsive fixes
 
 **Homepage**
 

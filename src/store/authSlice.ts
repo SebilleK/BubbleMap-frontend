@@ -8,11 +8,15 @@ interface AuthState {
 		email: string;
 		admin: boolean;
 	} | null;
+	alert: boolean;
+	alertMessage: string;
 }
 
 const initialState: AuthState = {
 	isLoggedIn: localStorage.getItem('user') ? true : false,
 	user: null,
+	alert: false,
+	alertMessage: '',
 };
 
 const authSlice = createSlice({
@@ -30,9 +34,15 @@ const authSlice = createSlice({
 			state.user = null;
 			localStorage.removeItem('user');
 		},
+		setAlert: (state, action: PayloadAction<boolean>) => {
+			state.alert = action.payload;
+		},
+		setAlertMessage: (state, action: PayloadAction<string>) => {
+			state.alertMessage = action.payload;
+		},
 	},
 });
 
-export const { login, logout } = authSlice.actions;
+export const { login, logout, setAlert, setAlertMessage } = authSlice.actions;
 
 export default authSlice.reducer;

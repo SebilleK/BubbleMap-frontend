@@ -11,11 +11,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setUserReviews, updateUserReviews } from '@/store/reviewsSlice';
 
 import { getAllReviewsOfUser, updateReview } from '@/api/utils/requests';
+import { setAlert, setAlertMessage } from '@/store/authSlice';
+import AlertMessage from '../Alert';
 
 export default function Reviews() {
 	//? redux store - actions and state of user reviews
 	const dispatch = useDispatch();
 	const reviews = useSelector((state: any) => state.reviews.userReviews);
+
+	//? alert state boolean
+	const alertVisible = useSelector((state: any) => state.auth.alert);
 
 	//? editing inputs
 	const [reviewText, setReviewText] = useState('');
@@ -60,12 +65,16 @@ export default function Reviews() {
 		//? checks for invalid values
 		if (parseInt(rating) < 1 || parseInt(rating) > 5) {
 			console.log('invalid rating value: please enter a valid rating between 1 and 5');
-			alert('Please enter a valid rating between 1 and 5');
+			dispatch(setAlertMessage('Please enter a valid rating between 1 and 5'));
+			dispatch(setAlert(true));
+			// alert('Please enter a valid rating between 1 and 5');
 			return;
 		}
 		if (reviewText.length < 10 || reviewText.length > 1000) {
 			console.log('invalid review text: please enter a review text with more than 10 characters and less than 1000 characters');
-			alert('Please enter a review text with more than 10 characters and less than 500 characters');
+
+			dispatch(setAlertMessage('Please enter a review text with more than 10 characters and less than 500 characters'));
+			dispatch(setAlert(true));
 			return;
 		}
 
@@ -111,6 +120,7 @@ export default function Reviews() {
 				<p className='m-4'>No reviews yet</p>
 			) : (
 				<div className='flex items-start gap-2 m-4'>
+					{alertVisible && <AlertMessage />}
 					{reviews.map((review: any) => (
 						<Card key={review.id} className='p-4'>
 							<Popover>

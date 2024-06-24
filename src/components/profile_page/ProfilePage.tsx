@@ -6,13 +6,15 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Label } from '@radix-ui/react-label';
 import { Input } from '../ui/input';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '@/store/authSlice';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axiosInstance from '@/api/axiosInstance';
+import { updateUser } from '@/api/utils/requests';
 
 import { Edit } from 'lucide-react';
+import { setAlert, setAlertMessage } from '@/store/authSlice';
+import AlertMessage from '../Alert';
 
 import Navbar from '../Navbar';
 import Footer from '../Footer';
@@ -20,6 +22,8 @@ import Footer from '../Footer';
 export default function Profile() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+
+	const alertState = useSelector((state: any) => state.auth.alert);
 
 	const user = JSON.parse(localStorage.getItem('user')!); // useSelector((state: any) => state.auth.user);
 
@@ -31,21 +35,41 @@ export default function Profile() {
 		event.preventDefault();
 
 		if (password === '' && email === '' && username === '') {
-			alert('No changes were made. Please enter at least one field to update.');
+			dispatch(setAlertMessage('No changes were made. Please enter at least one field to update.'));
+			dispatch(setAlert(true));
+			//alert('No changes were made. Please enter at least one field to update.');
 			return;
 		}
 
 		try {
-			const response = await axiosInstance.put(`/users/${user.id}`, {
+			/* const response = await axiosInstance.put(`/users/${user.id}`, {
 				username: username !== '' ? username : user.username,
 				email: email !== '' ? email : user.email,
 				password: password !== '' ? password : undefined,
-			});
-			console.log('user updated successfully');
-			console.log(response.data);
-			dispatch(logout());
-			navigate('/login');
-			console.log('user state updated successfully: logged out');
+			}); */
+
+			/* const response = await updateUser(
+				id: user.id,
+				username: username !== '' ? username : user.username,
+				email: email !== '' ? email : user.email,
+				password: password !== '' ? password : undefined,
+			); */
+
+			const response = await updateUser(user.id, username !== '' ? username : user.username, email !== '' ? email : user.email, password !== '' ? password : undefined);
+
+			// console.log(response);
+
+			if (response && response.response && response.response.data && response.response.data.name) {
+				dispatch(setAlertMessage('An existing user with the used email or username already exists.'));
+				dispatch(setAlert(true));
+				return;
+			} else {
+				console.log('user updated successfully');
+				console.log(response.data);
+				dispatch(logout());
+				navigate('/login');
+				console.log('user state updated successfully: logged out');
+			}
 		} catch (error) {
 			console.error('error while updating user: ', error);
 		}
@@ -56,6 +80,7 @@ export default function Profile() {
 			<Navbar />
 
 			<div className='flex flex-col items-center gap-2 m-4'>
+				{alertState && <AlertMessage />}
 				<h1 className='m-4 text-2xl font-bold'>Profile:</h1>
 				<Card className='mx-auto w-96 p-10'>
 					<Popover>
