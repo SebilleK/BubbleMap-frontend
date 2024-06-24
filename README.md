@@ -113,6 +113,7 @@ Non-comprehensive done and to-do list
 - Profile page has user reviews and they are also editable
 - Better modularity: centralized API requests + slices/actions use for managing App state
 - Homepage has a map that displays all Stores as markers, they are clickable
+- You can browse the reviews per store on the Homepage
 
 **To implement:**
 
@@ -123,7 +124,7 @@ Non-comprehensive done and to-do list
 
 **Homepage**
 
-- Browsing reviews per store (and adding reviews)
+- Add reviews on homepage
 
 **Styling optimization**
 

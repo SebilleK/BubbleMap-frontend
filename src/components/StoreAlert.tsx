@@ -19,7 +19,7 @@ export default function StoreAlert() {
 	};
 
 	const reviewsInfo = () => {
-		console.log('setting reviews alert to positive...');
+		console.log('setting reviews alert to positive/negative...');
 
 		if (reviewInfo) {
 			dispatch(setAlertStoreReviews(false));
@@ -30,12 +30,12 @@ export default function StoreAlert() {
 
 	return (
 		<>
-			<div className='fixed bottom-10 left-1/4 transform -translate-x-1/2 w-full max-w-sm md:w-1/3 md:max-w-md lg:max-w-lg bg-white p-3 rounded shadow border'>
+			<div className='fixed top-1/2 left-1/4 transform -translate-x-1/4 w-[90%] max-w-sm md:w-1/3 md:max-w-md lg:max-w-lg bg-white p-3 rounded shadow border'>
+				<button className='p-2' onClick={closeInfo}>
+					<CircleX />
+				</button>
 				<Card>
-					<button className='p-2' onClick={closeInfo}>
-						<CircleX />
-					</button>
-					<div className='text-center mb-6'>
+					<div className='text-center mt-4 mb-6'>
 						<CardTitle>{storeInfo.storeName}</CardTitle>
 					</div>
 

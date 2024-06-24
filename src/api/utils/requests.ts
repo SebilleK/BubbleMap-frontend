@@ -57,6 +57,17 @@ export async function getReviews() {
 }
 
 //? Get all reviews of a store
+export async function getAllReviewsOfStore(id: string) {
+	console.log('fetching all reviews of given store...');
+	try {
+		const response = await axiosInstance.get(`/reviews/all/store/${id}`);
+		console.log('reviews by store fetched successfully, returning response...');
+		return response.data;
+	} catch (error) {
+		console.log('there was an error while fetching the store reviews, returning error...');
+		console.error(error);
+	}
+}
 
 //? Get all reviews of a user
 export async function getAllReviewsOfUser(id: string) {

@@ -50,7 +50,8 @@ export default function MapComponent() {
 
 		const markerStyle = new Style({
 			image: new Icon({
-				src: markerImage,
+				/* src: markerImage, */
+				src: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1zdG9yZSI+PHBhdGggZD0ibTIgNyA0LjQxLTQuNDFBMiAyIDAgMCAxIDcuODMgMmg4LjM0YTIgMiAwIDAgMSAxLjQyLjU5TDIyIDciLz48cGF0aCBkPSJNNCAxMnY4YTIgMiAwIDAgMCAyIDJoMTJhMiAyIDAgMCAwIDItMnYtOCIvPjxwYXRoIGQ9Ik0xNSAyMnYtNGEyIDIgMCAwIDAtMi0yaC0yYTIgMiAwIDAgMC0yIDJ2NCIvPjxwYXRoIGQ9Ik0yIDdoMjAiLz48cGF0aCBkPSJNMjIgN3YzYTIgMiAwIDAgMS0yIDJhMi43IDIuNyAwIDAgMS0xLjU5LS42My43LjcgMCAwIDAtLjgyIDBBMi43IDIuNyAwIDAgMSAxNiAxMmEyLjcgMi43IDAgMCAxLTEuNTktLjYzLjcuNyAwIDAgMC0uODIgMEEyLjcgMi43IDAgMCAxIDEyIDEyYTIuNyAyLjcgMCAwIDEtMS41OS0uNjMuNy43IDAgMCAwLS44MiAwQTIuNyAyLjcgMCAwIDEgOCAxMmEyLjcgMi43IDAgMCAxLTEuNTktLjYzLjcuNyAwIDAgMC0uODIgMEEyLjcgMi43IDAgMCAxIDQgMTJhMiAyIDAgMCAxLTItMlY3Ii8+PC9zdmc+',
 			}),
 		});
 
@@ -72,7 +73,7 @@ export default function MapComponent() {
 		const mapObj = new Map({
 			view: new View({
 				center: lisbonCoordinates,
-				zoom: 10,
+				zoom: 12,
 			}),
 
 			layers: [new Tile({ source: new OSM() }), vectorLayer],
