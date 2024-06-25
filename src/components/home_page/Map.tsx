@@ -23,11 +23,15 @@ import { fromLonLat } from 'ol/proj';
 // stores
 import { useSelector } from 'react-redux';
 
+import { useTheme } from '../../theme/ThemeProvider';
+
 export default function MapComponent() {
 	const dispatch = useDispatch();
 	const stores = useSelector((state: any) => state.stores.stores);
 	const alertNotif = useSelector((state: any) => state.stores.alert);
 	const mapRef = useRef<HTMLDivElement | null>(null);
+
+	const { theme } = useTheme();
 
 	// components NEEDS to mount before map is rendered
 	useEffect(() => {
@@ -104,6 +108,8 @@ export default function MapComponent() {
 			mapObj.getTargetElement().style.cursor = hit ? 'pointer' : '';
 		});
 
+		//? dark mode
+
 		//? set map target
 		mapObj.setTarget(mapRef.current);
 
@@ -118,7 +124,7 @@ export default function MapComponent() {
 
 			<HomepageNavbar />
 
-			<div id='map' style={{ width: '100%', height: '100vh' }} ref={mapRef}></div>
+			<div id='map' style={{ width: '100%', height: '100vh', filter: theme === 'dark' ? 'grayscale(50%) brightness(0.8) contrast(1.5)' : 'brightness(1)' }} ref={mapRef}></div>
 			{alertNotif && <StoreAlert />}
 		</>
 	);

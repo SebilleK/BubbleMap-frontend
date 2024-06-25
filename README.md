@@ -132,9 +132,18 @@ if (response && response.response && response.response.data && response.response
 
 The alert (boolean) and alertMessage (string) are in the authSlice.ts present in the store directory. Although not directly correlated, most of the alerts set are result of Login/Registering so it felt appropriate.
 
----
+7. On the dark theme, instead of changing the Map object itself I applied some filters conditionally, which is a simpler way of providing some adaption to the said theme:
 
-Non-comprehensive done and to-do list
+```bash
+# found on the Map.tsx component
+<div id='map' style={{ width: '100%', height: '100vh', filter: theme === 'dark' ? 'grayscale(50%) brightness(0.8) contrast(1.5)' : 'brightness(1)' }} ref={mapRef}></div>
+```
+
+Based on this useful answer:
+
+- https://gis.stackexchange.com/a/475254
+
+---
 
 **Implemented:**
 
@@ -145,20 +154,4 @@ Non-comprehensive done and to-do list
 - Homepage has a map that displays all Stores as markers, they are clickable
 - You can browse the reviews per store on the Homepage
 - Alerts: on Login (Unregistered email, Wrong password); on Register (Already existing username or email, Password(s) matching & password verifying); on Profile (Invalid reviews update, Invalid user info update)
-
-**To implement:**
-
-**General optimization**
-
-- Remove DOM nesting errors?
-- Some responsive fixes
-
-**Homepage**
-
-- Add reviews on homepage
-
-**Styling optimization**
-
-- Nicer color scheme
-- Add a theme switcher for dark theme
-- Better layout on profile page, also on homepage
+- Dark Mode
