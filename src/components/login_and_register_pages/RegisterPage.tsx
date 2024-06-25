@@ -75,7 +75,7 @@ export default function Register() {
 	};
 
 	return (
-		<div className='bg-cover bg-center h-screen' style={{ backgroundImage: `url(${bubbleteaImage})` }}>
+		<div className='bg-cover bg-center h-screen'>
 			{/* <Navbar /> */}
 			<div className='flex flex-col items-center '>
 				<HomepageNavbar />

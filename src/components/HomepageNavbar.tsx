@@ -35,43 +35,37 @@ export default function HomepageNavbar() {
 
 			<ul className='p-2 flex flex-row gap-4 text-xl'>
 				<li>
-					<a className='hover:text-green-800 hover:underline hover:text-xl hover:underline-offset-4 hover:animate-in  hover:decoration-2 '>
-						<Link to='/home'>Home</Link>
-					</a>
+					<Link className='hover:text-green-800 hover:underline hover:text-xl hover:underline-offset-4 hover:animate-in  hover:decoration-2 ' to='/home'>
+						Home
+					</Link>
 				</li>
 				<li>
-					<a className='hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '>
-						<Link to='/about'>About</Link>
-					</a>
+					<Link className='hover:text-green-800 hover:underline hover:text-xl hover:underline-offset-4 hover:animate-in  hover:decoration-2 ' to='/about'>
+						About
+					</Link>
 				</li>
 				{!isLoggedIn && (
 					<>
-						<a className='hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '>
-							<li>
-								<Link to='/login'>Login</Link>
-							</li>
-						</a>
-						<a className=' hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '>
-							<li>
-								<Link to='/register'>Register</Link>
-							</li>
-						</a>
+						<li className='hover:text-green-800 hover:underline hover:text-xl hover:underline-offset-4 hover:animate-in  hover:decoration-2 '>
+							<Link to='/login'>Login</Link>
+						</li>
+
+						<li className='hover:text-green-800 hover:underline hover:text-xl hover:underline-offset-4 hover:animate-in  hover:decoration-2 '>
+							<Link to='/register'>Register</Link>
+						</li>
 					</>
 				)}
 				{isLoggedIn && (
 					<>
-						<a className=' hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '>
-							<li>
-								<Link to='/profile'>Profile</Link>
-							</li>
-						</a>
-						<a className=' text-red-300 hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 '>
-							<li>
-								<Button className='h-6 text-lg py-4' onClick={handleLogout}>
-									Logout
-								</Button>
-							</li>
-						</a>
+						<li className='hover:text-green-800 hover:underline hover:text-xl hover:underline-offset-4 hover:animate-in  hover:decoration-2 '>
+							<Link to='/profile'>Profile</Link>
+						</li>
+
+						<li className='hover:text-green-800 hover:underline hover:text-xl hover:underline-offset-4 hover:animate-in  hover:decoration-2 '>
+							<Button className='h-6 text-lg py-4' onClick={handleLogout}>
+								Logout
+							</Button>
+						</li>
 					</>
 				)}
 			</ul>

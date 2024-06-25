@@ -125,9 +125,7 @@ export default function Reviews() {
 						<Card key={review.id} className='p-4'>
 							<Popover>
 								<PopoverTrigger>
-									<Button onClick={() => handleEditReview(review)}>
-										<Edit />
-									</Button>
+									<Edit onClick={() => handleEditReview(review)} />
 								</PopoverTrigger>
 								<PopoverContent>
 									<form onSubmit={handleReviewUpdate}>

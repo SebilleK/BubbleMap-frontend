@@ -75,7 +75,7 @@ export default function Profile() {
 	};
 
 	return (
-		<div>
+		<>
 			<div className='flex flex-col items-center mb-28'>
 				<HomepageNavbar />
 			</div>
@@ -88,9 +88,7 @@ export default function Profile() {
 				<Card className='mx-auto w-96 p-10'>
 					<Popover>
 						<PopoverTrigger>
-							<Button>
-								<Edit />
-							</Button>
+							<Edit />
 						</PopoverTrigger>
 						<PopoverContent>
 							<form onSubmit={handleUserUpdate}>
@@ -123,18 +121,10 @@ export default function Profile() {
 						<CardDescription className='text-lg'>
 							Hello, {user.username}! Welcome to your profile.
 							<CardContent className='p-4 mt-4'>
-								<p>
-									<b>ID:</b> {user.id}
-								</p>
-								<p>
-									<b>Username:</b> {user.username}
-								</p>
-								<p>
-									<b>Email:</b> {user.email}
-								</p>
-								<p>
-									<b>Permissions:</b> {user.admin ? 'Admin' : 'User'}
-								</p>
+								<p>ID: {user.id}</p>
+								<p>Username: {user.username}</p>
+								<p>Email: {user.email}</p>
+								<p>Permissions: {user.admin ? 'Admin' : 'User'}</p>
 							</CardContent>
 						</CardDescription>
 					</CardHeader>
@@ -142,6 +132,6 @@ export default function Profile() {
 			</div>
 
 			<Reviews />
-		</div>
+		</>
 	);
 }

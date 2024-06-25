@@ -1,11 +1,10 @@
 import HomepageNavbar from '../HomepageNavbar';
 
-import bubbleteaImage from '../../assets/bubbletea.jpg';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Card, CardContent, CardTitle } from '../ui/card';
 export default function About() {
 	return (
-		<div className='bg-cover bg-center h-screen' style={{ backgroundImage: `url(${bubbleteaImage})` }}>
+		<div className='bg-cover bg-center h-screen'>
 			<div className='flex flex-col items-center mb-12'>
 				<HomepageNavbar />
 			</div>
@@ -51,13 +50,9 @@ export default function About() {
 							</a>
 						</p>
 						<p className=''>
-							About/Login/Register pages background photo by{' '}
-							<a
-								className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2'
-								href='https://unsplash.com/photos/clear-plastic-container-dHQQv-BKTjo'
-								target='_blank'
-							>
-								Orimi Protograph on Unsplash
+							Stores marker on Homepage map:{' '}
+							<a className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2' href='https://lucide.dev/icons/store' target='_blank'>
+								Store Icon on Lucide
 							</a>
 						</p>
 					</CardContent>
