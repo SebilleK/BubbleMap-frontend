@@ -9,8 +9,8 @@ export default function About() {
 				<HomepageNavbar />
 			</div>
 
-			<div className='flex flex-col items-center '>
-				<div className='w-1/2 mt-24 mb-12 px-12 py-8 bg-white rounded shadow text-lg'>
+			<div className='flex flex-col items-center'>
+				<div className='w-1/2 mt-24 mb-12 px-12 py-8 bg-white dark:bg-black rounded shadow text-lg dark:border-gray-700 dark:border-2 dark:border-gray-800 shadow'>
 					<Accordion type='single' collapsible className='w-full'>
 						<AccordionItem value='item-1'>
 							<AccordionTrigger>What is this?</AccordionTrigger>
@@ -33,24 +33,28 @@ export default function About() {
 					</Accordion>
 				</div>
 
-				<Card className='w-1/2 mb-36 p-12 bg-white rounded shadow text-lg'>
+				<Card className='w-1/2 mb-36 p-12 bg-white dark:bg-black dark:border-2 dark:border-gray-800 rounded text-lg'>
 					<CardTitle>Attribution</CardTitle>
 					<CardContent className='py-4 flex flex-col gap-4'>
 						<p className=''>
 							Bubble Tea logo icon created by{' '}
-							<a className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 ' href='https://www.flaticon.com/free-icons/bubble-tea' target='_blank'>
+							<a
+								className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 dark:hover:text-pink-400 '
+								href='https://www.flaticon.com/free-icons/bubble-tea'
+								target='_blank'
+							>
 								Luvdat on Flaticon
 							</a>
 						</p>
 						<p className=''>
 							Stores marker on Homepage map:{' '}
-							<a className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2' href='https://lucide.dev/icons/store' target='_blank'>
+							<a className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 dark:hover:text-pink-400' href='https://lucide.dev/icons/store' target='_blank'>
 								Store Icon on Lucide
 							</a>
 						</p>
 						<p className=''>
 							All remaining icons were also taken from{' '}
-							<a className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2' href='https://lucide.dev/' target='_blank'>
+							<a className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 dark:hover:text-pink-400' href='https://lucide.dev/' target='_blank'>
 								{' '}
 								Lucide
 							</a>

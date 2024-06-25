@@ -60,7 +60,7 @@ export default function CreateReview() {
 	};
 
 	return (
-		<div className='fixed top-1/3 right-2 md:right-10 bg-white fixed z-50 p-2 rounded w-[90%] md:w-[500px] md:h-[530px]'>
+		<div className='fixed top-1/3 right-2 md:right-10 bg-white fixed z-50 p-2 rounded w-[90%] md:w-[500px] md:h-[530px] dark:bg-black'>
 			<button className='p-2' onClick={closeInfo}>
 				<CircleX />
 			</button>
