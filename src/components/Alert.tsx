@@ -20,7 +20,7 @@ export default function AlertMessage() {
 		}
 	}, [alertVisibility, dispatch]);
 	return (
-		<div className='fixed top-10 md:right-20 sm:right-10 sm:w-1/2 md:w-1/4'>
+		<div className='fixed bottom-2 right-2 w-1/4'>
 			<Alert>
 				<div className='flex items-center gap-2'>
 					<CircleAlert />

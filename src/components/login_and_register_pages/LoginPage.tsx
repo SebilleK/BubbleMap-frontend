@@ -63,8 +63,8 @@ export default function Login() {
 				<HomepageNavbar />
 			</div>
 
-			{alertState && <AlertMessage />}
 			<div className='flex flex-col items-center my-52'>
+				{alertState && <AlertMessage />}
 				<Card className='mx-auto max-w-sm mb-2.5'>
 					<CardHeader>
 						<CardTitle className='text-2xl'>Login</CardTitle>

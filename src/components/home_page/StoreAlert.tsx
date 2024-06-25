@@ -9,12 +9,12 @@ import { setAlertStoreReviews, setAlertCreateReview } from '@/store/reviewsSlice
 import ReviewsAlert from './ReviewsAlert';
 import CreateReview from './CreateReview';
 
-
 export default function StoreAlert() {
 	const dispatch = useDispatch();
 	const storeInfo = useSelector((state: any) => state.stores.storeInfo);
 	const reviewInfo = useSelector((state: any) => state.reviews.storeReviewsAlert);
 	const createReviewPopup = useSelector((state: any) => state.reviews.alertCreateReview);
+	const isLoggedIn = useSelector((state: any) => state.auth.isLoggedIn);
 
 	const closeInfo = () => {
 		dispatch(setAlert(false));
@@ -61,7 +61,7 @@ export default function StoreAlert() {
 					</CardFooter>
 					<div className='text-center mb-4 flex justify-center gap-4'>
 						<Button onClick={reviewsInfo}>{reviewInfo ? 'Hide Reviews' : 'Show Reviews'}</Button>
-						<Button onClick={createReviewWindow}>{createReviewPopup ? 'Hide Popup' : 'Create Review'}</Button>
+						{isLoggedIn && <Button onClick={createReviewWindow}>{createReviewPopup ? 'Hide Popup' : 'Create Review'}</Button>}
 					</div>
 				</Card>
 			</div>
