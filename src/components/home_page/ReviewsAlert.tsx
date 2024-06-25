@@ -48,14 +48,18 @@ export default function ReviewsAlert() {
 					</b>
 				</div>
 
-				{storeReviews.map((review: any) => {
-					return (
-						<Card className='my-2 p-2' key={review.id}>
-							<h2>Rating: {review.rating}</h2>
-							<p>{review.reviewText}</p>
-						</Card>
-					);
-				})}
+				{storeReviews.length === 0 ? (
+					<p>No reviews yet</p>
+				) : (
+					storeReviews.map((review: any) => {
+						return (
+							<Card className='my-2 p-2' key={review.id}>
+								<h2>Rating: {review.rating}</h2>
+								<p>{review.reviewText}</p>
+							</Card>
+						);
+					})
+				)}
 			</ScrollArea>
 		</div>
 	);

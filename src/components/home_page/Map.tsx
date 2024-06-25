@@ -67,13 +67,13 @@ export default function MapComponent() {
 		//? overlay: navbar
 
 		//? center coordinates
-		const lisbonCoordinates = fromLonLat([-9.139, 38.722]);
+		const lisbonCoordinates = fromLonLat([-9.139, 38.729]);
 
 		//? map object
 		const mapObj = new Map({
 			view: new View({
 				center: lisbonCoordinates,
-				zoom: 12,
+				zoom: 13,
 			}),
 
 			layers: [new Tile({ source: new OSM() }), vectorLayer],
