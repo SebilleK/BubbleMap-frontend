@@ -1,5 +1,5 @@
 import HomepageNavbar from '../HomepageNavbar';
-
+import MoreInfo from '../MoreInfo.tsx';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Card, CardContent, CardTitle } from '../ui/card';
 export default function About() {
@@ -21,14 +21,7 @@ export default function About() {
 						</AccordionItem>
 						<AccordionItem value='item-2'>
 							<AccordionTrigger>Why did you make it?</AccordionTrigger>
-							<AccordionContent className='text-base'>
-								I thought it would be a fun idea and it's also my Full Stack Webdev course final project! Check out its Github repository{' '}
-								<a className='underline  ' target='_blank' rel='noopener noreferrer' href='https://github.com/SebilleK/BubbleMap'>
-									{' '}
-									here
-								</a>
-								.
-							</AccordionContent>
+							<AccordionContent className='text-base'>I really like Bubble Tea and thought it would be a fun idea. It's also my Full Stack Webdev course final project!</AccordionContent>
 						</AccordionItem>
 						<AccordionItem value='item-3'>
 							<AccordionTrigger>What is Bubble Tea though?</AccordionTrigger>
@@ -44,7 +37,7 @@ export default function About() {
 					<CardTitle>Attribution</CardTitle>
 					<CardContent className='py-4 flex flex-col gap-4'>
 						<p className=''>
-							Bubble tea logo icon created by{' '}
+							Bubble Tea logo icon created by{' '}
 							<a className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2 ' href='https://www.flaticon.com/free-icons/bubble-tea' target='_blank'>
 								Luvdat on Flaticon
 							</a>
@@ -55,9 +48,18 @@ export default function About() {
 								Store Icon on Lucide
 							</a>
 						</p>
+						<p className=''>
+							All remaining icons were also taken from{' '}
+							<a className='underline hover:text-green-800 hover:underline hover:underline-offset-4 hover:decoration-2' href='https://lucide.dev/' target='_blank'>
+								{' '}
+								Lucide
+							</a>
+						</p>
 					</CardContent>
 				</Card>
 			</div>
+
+			<MoreInfo />
 		</div>
 	);
 }

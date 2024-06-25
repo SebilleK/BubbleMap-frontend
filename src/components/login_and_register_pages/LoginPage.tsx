@@ -1,5 +1,5 @@
 import HomepageNavbar from '../HomepageNavbar';
-import bubbleteaImage from '../../assets/bubbletea.jpg';
+import MoreInfo from '../MoreInfo';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -58,6 +58,7 @@ export default function Login() {
 
 	return (
 		<div className='bg-cover bg-center h-screen'>
+			<MoreInfo />
 			{/* <Navbar /> */}
 			<div className='flex flex-col items-center '>
 				<HomepageNavbar />

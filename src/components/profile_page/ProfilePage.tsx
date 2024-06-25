@@ -5,7 +5,7 @@ import { Button } from '../ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Label } from '@radix-ui/react-label';
 import { Input } from '../ui/input';
-
+import MoreInfo from '../MoreInfo';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '@/store/authSlice';
 import { useState } from 'react';
@@ -76,6 +76,7 @@ export default function Profile() {
 
 	return (
 		<>
+			<MoreInfo />
 			<div className='flex flex-col items-center mb-28'>
 				<HomepageNavbar />
 			</div>

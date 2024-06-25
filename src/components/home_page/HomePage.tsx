@@ -1,4 +1,5 @@
 import MapComponent from './Map.tsx';
+import MoreInfo from '../MoreInfo.tsx';
 import { useEffect } from 'react';
 import { getStores } from '@/api/utils/requests';
 import { useDispatch } from 'react-redux';
@@ -15,6 +16,7 @@ export default function Home() {
 	return (
 		<div className='flex flex-col items-center'>
 			<MapComponent />
+			<MoreInfo />
 		</div>
 	);
 }

@@ -1,5 +1,5 @@
 import HomepageNavbar from '../HomepageNavbar';
-import bubbleteaImage from '../../assets/bubbletea.jpg';
+import MoreInfo from '../MoreInfo';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -77,6 +77,7 @@ export default function Register() {
 	return (
 		<div className='bg-cover bg-center h-screen'>
 			{/* <Navbar /> */}
+			<MoreInfo />
 			<div className='flex flex-col items-center '>
 				<HomepageNavbar />
 			</div>
