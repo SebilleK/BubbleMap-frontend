@@ -5,13 +5,16 @@ import { setStoreInfo } from '@/store/storesSlice';
 import { Card, CardContent, CardFooter, CardTitle } from '../ui/card';
 import { CircleX } from 'lucide-react';
 import { Button } from '../ui/button';
-import { setAlertStoreReviews } from '@/store/reviewsSlice';
+import { setAlertStoreReviews, setAlertCreateReview } from '@/store/reviewsSlice';
 import ReviewsAlert from './ReviewsAlert';
+import CreateReview from './CreateReview';
+
 
 export default function StoreAlert() {
 	const dispatch = useDispatch();
 	const storeInfo = useSelector((state: any) => state.stores.storeInfo);
 	const reviewInfo = useSelector((state: any) => state.reviews.storeReviewsAlert);
+	const createReviewPopup = useSelector((state: any) => state.reviews.alertCreateReview);
 
 	const closeInfo = () => {
 		dispatch(setAlert(false));
@@ -25,6 +28,16 @@ export default function StoreAlert() {
 			dispatch(setAlertStoreReviews(false));
 		} else {
 			dispatch(setAlertStoreReviews(true));
+		}
+	};
+
+	const createReviewWindow = () => {
+		console.log('setting create reviews popup to positive/negative...');
+
+		if (createReviewPopup) {
+			dispatch(setAlertCreateReview(false));
+		} else {
+			dispatch(setAlertCreateReview(true));
 		}
 	};
 
@@ -46,12 +59,14 @@ export default function StoreAlert() {
 					<CardFooter>
 						<p>{storeInfo.storeAddress}</p>
 					</CardFooter>
-					<div className='text-center mb-4'>
+					<div className='text-center mb-4 flex justify-center gap-4'>
 						<Button onClick={reviewsInfo}>{reviewInfo ? 'Hide Reviews' : 'Show Reviews'}</Button>
+						<Button onClick={createReviewWindow}>{createReviewPopup ? 'Hide Popup' : 'Create Review'}</Button>
 					</div>
 				</Card>
 			</div>
 			{reviewInfo && <ReviewsAlert />}
+			{createReviewPopup && <CreateReview />}
 		</>
 	);
 }

@@ -5,6 +5,7 @@ interface ReviewState {
 	userReviews: any;
 	storeReviews: any;
 	storeReviewsAlert: boolean;
+	alertCreateReview: boolean;
 }
 
 const initialState: ReviewState = {
@@ -12,6 +13,7 @@ const initialState: ReviewState = {
 	userReviews: [],
 	storeReviews: [],
 	storeReviewsAlert: false,
+	alertCreateReview: false,
 };
 
 const reviewSlice = createSlice({
@@ -37,9 +39,12 @@ const reviewSlice = createSlice({
 		setStoreReviews: (state, action: PayloadAction<any>) => {
 			state.storeReviews = action.payload;
 		},
+		setAlertCreateReview: (state, action: PayloadAction<any>) => {
+			state.alertCreateReview = action.payload;
+		},
 	},
 });
 
-export const { setReviews, setUserReviews, updateUserReviews, setStoreReviews, setAlertStoreReviews } = reviewSlice.actions;
+export const { setReviews, setUserReviews, updateUserReviews, setStoreReviews, setAlertStoreReviews, setAlertCreateReview } = reviewSlice.actions;
 
 export default reviewSlice.reducer;

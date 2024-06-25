@@ -1,5 +1,4 @@
-import Navbar from '../Navbar';
-import Footer from '../Footer';
+import HomepageNavbar from '../HomepageNavbar';
 import bubbleteaImage from '../../assets/bubbletea.jpg';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
@@ -59,9 +58,13 @@ export default function Login() {
 
 	return (
 		<div className='bg-cover bg-center h-screen' style={{ backgroundImage: `url(${bubbleteaImage})` }}>
-			<Navbar />
+			{/* <Navbar /> */}
+			<div className='flex flex-col items-center '>
+				<HomepageNavbar />
+			</div>
+
 			{alertState && <AlertMessage />}
-			<div className='flex flex-col items-center my-44'>
+			<div className='flex flex-col items-center my-52'>
 				<Card className='mx-auto max-w-sm mb-2.5'>
 					<CardHeader>
 						<CardTitle className='text-2xl'>Login</CardTitle>
@@ -92,8 +95,6 @@ export default function Login() {
 					</CardContent>
 				</Card>
 			</div>
-
-			<Footer />
 		</div>
 	);
 }

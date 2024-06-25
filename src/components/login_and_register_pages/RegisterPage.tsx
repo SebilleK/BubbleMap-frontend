@@ -1,5 +1,4 @@
-import Navbar from '../Navbar';
-import Footer from '../Footer';
+import HomepageNavbar from '../HomepageNavbar';
 import bubbleteaImage from '../../assets/bubbletea.jpg';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -77,9 +76,12 @@ export default function Register() {
 
 	return (
 		<div className='bg-cover bg-center h-screen' style={{ backgroundImage: `url(${bubbleteaImage})` }}>
-			<Navbar />
+			{/* <Navbar /> */}
+			<div className='flex flex-col items-center '>
+				<HomepageNavbar />
+			</div>
 			{alertState && <AlertMessage />}
-			<div className='flex flex-col items-center p-24 my-1'>
+			<div className='flex flex-col items-center p-24 my-24'>
 				<Card className='mx-auto max-w-sm mb-2.5'>
 					<CardHeader>
 						<CardTitle className='text-xl'>Register</CardTitle>
@@ -118,8 +120,6 @@ export default function Register() {
 					</form>
 				</Card>
 			</div>
-
-			<Footer />
 		</div>
 	);
 }

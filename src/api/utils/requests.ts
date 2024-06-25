@@ -119,3 +119,22 @@ export async function updateReview(id: string, options: { rating?: number; revie
 		console.error(error);
 	}
 }
+
+//? Create a review
+export async function createReview(params: { storeId: string; id: string }, body: { rating: number; reviewText: string }) {
+	console.log('creating review...');
+	const { storeId, id } = params;
+	const { rating, reviewText } = body;
+	try {
+		const response = await axiosInstance.post(`/reviews/create/${id}/${storeId}`, {
+			rating,
+			reviewText,
+		});
+		console.log('review created successfully, returning response...');
+		return response.data;
+	} catch (error) {
+		console.log('there was an error while creating review, returning error...');
+		console.error(error);
+		return error;
+	}
+}

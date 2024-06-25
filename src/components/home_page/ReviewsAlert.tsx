@@ -36,7 +36,7 @@ export default function ReviewsAlert() {
 		dispatch(setAlertStoreReviews(false));
 	};
 	return (
-		<div className='fixed top-1/3 right-2 md:right-10 bg-white fixed z-50 p-2 rounded w-[90%] md:w-[400px]'>
+		<div className='fixed top-2 right-2 md:right-10 bg-white fixed z-50 p-2 rounded w-[90%] md:w-[400px]'>
 			<button className='' onClick={closeInfo}>
 				<CircleX />
 			</button>

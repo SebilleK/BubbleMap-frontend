@@ -1,9 +1,8 @@
-import MapComponent from './Map';
+import MapComponent from './Map.tsx';
 import { useEffect } from 'react';
 import { getStores } from '@/api/utils/requests';
 import { useDispatch } from 'react-redux';
 import { setStores } from '@/store/storesSlice';
-
 export default function Home() {
 	const dispatch = useDispatch();
 

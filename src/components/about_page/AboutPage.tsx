@@ -1,12 +1,15 @@
-import Navbar from '../Navbar';
-import Footer from '../Footer';
+import HomepageNavbar from '../HomepageNavbar';
+
 import bubbleteaImage from '../../assets/bubbletea.jpg';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Card, CardContent, CardTitle } from '../ui/card';
 export default function About() {
 	return (
 		<div className='bg-cover bg-center h-screen' style={{ backgroundImage: `url(${bubbleteaImage})` }}>
-			<Navbar />
+			<div className='flex flex-col items-center mb-12'>
+				<HomepageNavbar />
+			</div>
+
 			<div className='flex flex-col items-center '>
 				<div className='w-1/2 mt-24 mb-12 px-12 py-8 bg-white rounded shadow text-lg'>
 					<Accordion type='single' collapsible className='w-full'>
@@ -60,7 +63,6 @@ export default function About() {
 					</CardContent>
 				</Card>
 			</div>
-			<Footer />
 		</div>
 	);
 }

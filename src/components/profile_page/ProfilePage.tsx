@@ -16,8 +16,7 @@ import { Edit } from 'lucide-react';
 import { setAlert, setAlertMessage } from '@/store/authSlice';
 import AlertMessage from '../Alert';
 
-import Navbar from '../Navbar';
-import Footer from '../Footer';
+import HomepageNavbar from '../HomepageNavbar';
 
 export default function Profile() {
 	const dispatch = useDispatch();
@@ -77,7 +76,11 @@ export default function Profile() {
 
 	return (
 		<div>
-			<Navbar />
+			<div className='flex flex-col items-center mb-28'>
+				<HomepageNavbar />
+			</div>
+
+			{/* <Navbar /> */}
 
 			<div className='flex flex-col items-center gap-2 m-4'>
 				{alertState && <AlertMessage />}
@@ -139,8 +142,6 @@ export default function Profile() {
 			</div>
 
 			<Reviews />
-
-			<Footer />
 		</div>
 	);
 }
