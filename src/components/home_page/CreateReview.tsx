@@ -42,6 +42,8 @@ export default function CreateReview() {
 
 			console.log(response);
 
+			dispatch(setAlertCreateReview(false));
+
 			if (response && response.response && response.response.data && response.response.data.name) {
 				if (response.response.data.message.toLowerCase().includes('validation')) {
 					dispatch(setAlertMessage('Please enter a review text with more than 10 characters and less than 500 characters. Your rating must be between 1 and 5.'));

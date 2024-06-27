@@ -12,6 +12,7 @@ import Login from './components/login_and_register_pages/LoginPage';
 import Home from './components/home_page/HomePage.tsx';
 import Register from './components/login_and_register_pages/RegisterPage';
 import Profile from './components/profile_page/ProfilePage.tsx';
+import AdminPage from './components/admin_page/AdminPage.tsx';
 
 // Theme Provider
 import { ThemeProvider } from './theme/ThemeProvider.tsx';
@@ -27,6 +28,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 					<Route path='/login' element={<Login />} />
 					<Route path='/register' element={<Register />} />
 					<Route path='/profile' element={<Profile />} />
+					<Route path='/admin' element={<AdminPage />} />
 				</Routes>
 			</Router>
 		</ThemeProvider>

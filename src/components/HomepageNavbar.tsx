@@ -13,6 +13,7 @@ export default function HomepageNavbar() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const isLoggedIn = useSelector((state: any) => state.auth.isLoggedIn);
+	const isAdmin = useSelector((state: any) => state.auth.user?.admin);
 	const { theme } = useTheme();
 	const logoSrc = theme === 'dark' ? bubblemapLogoDark : bubblemapLogo;
 
@@ -68,6 +69,12 @@ export default function HomepageNavbar() {
 						<li className='hover:text-green-800 hover:underline hover:text-xl hover:underline-offset-4 hover:animate-in  hover:decoration-2 dark:hover:text-pink-400'>
 							<Link to='/profile'>Profile</Link>
 						</li>
+
+						{isAdmin && (
+							<li className='hover:text-green-800 hover:underline hover:text-xl hover:underline-offset-4 hover:animate-in  hover:decoration-2 dark:hover:text-pink-400'>
+								<Link to='/admin'>Admin</Link>
+							</li>
+						)}
 
 						<li className='hover:text-green-800 hover:underline hover:text-xl hover:underline-offset-4 hover:animate-in  hover:decoration-2 dark:hover:text-pink-400'>
 							<Button className='h-6 text-lg py-4' onClick={handleLogout}>

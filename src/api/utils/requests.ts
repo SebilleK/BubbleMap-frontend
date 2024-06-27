@@ -62,6 +62,19 @@ export async function getStores() {
 	}
 }
 
+export async function createStore(body: any) {
+	console.log('creating store...');
+	try {
+		const response = await axiosInstance.post('/stores/create', body);
+
+		return response.data;
+	} catch (error) {
+		console.log('there was an error while creating store, returning error...');
+		console.error(error);
+		return error;
+	}
+}
+
 //?REVIEWS
 
 //? Get all reviews
@@ -134,6 +147,20 @@ export async function createReview(params: { storeId: string; id: string }, body
 		return response.data;
 	} catch (error) {
 		console.log('there was an error while creating review, returning error...');
+		console.error(error);
+		return error;
+	}
+}
+
+//? Delete a review
+export async function deleteReview(id: string) {
+	console.log('deleting review...');
+	try {
+		const response = await axiosInstance.delete(`/reviews/delete/${id}`);
+		console.log('review deleted successfully in db, returning response...');
+		return response.data;
+	} catch (error) {
+		console.log('there was an error while deleting review, returning error...');
 		console.error(error);
 		return error;
 	}

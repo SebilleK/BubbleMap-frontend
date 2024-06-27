@@ -108,8 +108,6 @@ export default function MapComponent() {
 			mapObj.getTargetElement().style.cursor = hit ? 'pointer' : '';
 		});
 
-		//? dark mode
-
 		//? set map target
 		mapObj.setTarget(mapRef.current);
 

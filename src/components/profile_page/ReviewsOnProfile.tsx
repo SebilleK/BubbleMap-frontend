@@ -4,13 +4,13 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Card } from '../ui/card';
 import { Label } from '../ui/label';
 import { Input } from '../ui/input';
-import { Edit } from 'lucide-react';
+import { Edit, Trash2 } from 'lucide-react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setUserReviews, updateUserReviews } from '@/store/reviewsSlice';
 
-import { getAllReviewsOfUser, updateReview } from '@/api/utils/requests';
+import { getAllReviewsOfUser, updateReview, deleteReview } from '@/api/utils/requests';
 import { setAlert, setAlertMessage } from '@/store/authSlice';
 import AlertMessage from '../Alert';
 
@@ -112,6 +112,24 @@ export default function Reviews() {
 		//! It is unnecessary to do another fetch here. see above!!!!
 	};
 
+	const handleDeleteReview = async (review: any) => {
+		//? to set correct values
+		handleEditReview(review);
+		console.log('review is being deleted: component');
+		console.log(review.id);
+
+		try {
+			const response = await deleteReview(review.id);
+			console.log(response);
+			console.log('review deleted successfully in db');
+			dispatch(setUserReviews(reviews.filter((r: any) => r.id !== review.id)));
+		} catch (error) {
+			console.error('error while deleting review: ', error);
+			setAlertMessage('There was an error while deleting review, please try again later');
+			setAlert(true);
+		}
+	};
+
 	return (
 		<>
 			<h1 className='m-4 text-2xl font-bold'>Reviews:</h1>
@@ -123,32 +141,38 @@ export default function Reviews() {
 					{alertVisible && <AlertMessage />}
 					{reviews.map((review: any) => (
 						<Card key={review.id} className='p-4'>
-							<Popover>
-								<PopoverTrigger>
-									<Edit onClick={() => handleEditReview(review)} />
-								</PopoverTrigger>
-								<PopoverContent>
-									<form onSubmit={handleReviewUpdate}>
-										<div className='grid gap-4'>
-											<div className='space-y-2'>
-												<h4 className='font-medium leading-none'>Review Info</h4>
-												<p className='text-sm text-muted-foreground'>Edit your review of a store.</p>
-											</div>
-											<div className='grid gap-2'>
-												<div className='grid grid-cols-3 items-center gap-4'>
-													<Label htmlFor='rating'>Rating</Label>
-													<Input id='rating' type='number' min={1} max={5} value={rating} onChange={e => setRating(e.target.value)} className='col-span-2 h-8' />
+							<div className='flex gap-1'>
+								<button onClick={() => handleDeleteReview(review)}>
+									<Trash2 />
+								</button>
+								<Popover>
+									<PopoverTrigger>
+										<Edit onClick={() => handleEditReview(review)} />
+									</PopoverTrigger>
+
+									<PopoverContent>
+										<form onSubmit={handleReviewUpdate}>
+											<div className='grid gap-4'>
+												<div className='space-y-2'>
+													<h4 className='font-medium leading-none'>Review Info</h4>
+													<p className='text-sm text-muted-foreground'>Edit your review of a store.</p>
 												</div>
-												<div className='grid grid-cols-3 items-center gap-4'>
-													<Label htmlFor='reviewText'>Text</Label>
-													<Input id='reviewText' type='text' value={reviewText} onChange={e => setReviewText(e.target.value)} className='col-span-2 h-8' />
+												<div className='grid gap-2'>
+													<div className='grid grid-cols-3 items-center gap-4'>
+														<Label htmlFor='rating'>Rating</Label>
+														<Input id='rating' type='number' min={1} max={5} value={rating} onChange={e => setRating(e.target.value)} className='col-span-2 h-8' />
+													</div>
+													<div className='grid grid-cols-3 items-center gap-4'>
+														<Label htmlFor='reviewText'>Text</Label>
+														<Input id='reviewText' type='text' value={reviewText} onChange={e => setReviewText(e.target.value)} className='col-span-2 h-8' />
+													</div>
 												</div>
+												<Button type='submit'>Save changes</Button>
 											</div>
-											<Button type='submit'>Save changes</Button>
-										</div>
-									</form>
-								</PopoverContent>
-							</Popover>
+										</form>
+									</PopoverContent>
+								</Popover>
+							</div>
 							<div className='p-4'>
 								<p>
 									<b>Store ID:</b> {review.storeId}
