@@ -83,11 +83,11 @@ export default function AdminPage() {
 							</div>
 							<div className='grid grid-cols-3 items-center gap-4'>
 								<Label htmlFor='maxWidth'>Latitude *</Label>
-								<Input id='email' type='number' step={0.00001} min={-90} max={90} value={0} onChange={e => setLatitude(Number(e.target.value))} className='col-span-2 h-8' />
+								<Input id='email' type='number' step={0.00001} min={-90} max={90} onChange={e => setLatitude(Number(e.target.value))} className='col-span-2 h-8' />
 							</div>
 							<div className='grid grid-cols-3 items-center gap-4'>
 								<Label htmlFor='height'>Longitude *</Label>
-								<Input id='password' type='number' step={0.00001} min={-180} max={180} value={0} onChange={e => setLongitude(Number(e.target.value))} className='col-span-2 h-8' />
+								<Input id='password' type='number' step={0.00001} min={-180} max={180} onChange={e => setLongitude(Number(e.target.value))} className='col-span-2 h-8' />
 							</div>
 						</div>
 						<Button type='submit'>Create</Button>
