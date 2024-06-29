@@ -75,6 +75,19 @@ export async function createStore(body: any) {
 	}
 }
 
+export async function deleteStore(id: string) {
+	console.log('deleting store...');
+	try {
+		const response = await axiosInstance.delete(`/stores/${id}`);
+		console.log('store deleted successfully in the db, returning response...');
+		return response.data;
+	} catch (error) {
+		console.log('there was an error while deleting store, returning error...');
+		console.error(error);
+		return error;
+	}
+}
+
 //?REVIEWS
 
 //? Get all reviews

@@ -13,7 +13,8 @@ export default function HomepageNavbar() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const isLoggedIn = useSelector((state: any) => state.auth.isLoggedIn);
-	const isAdmin = useSelector((state: any) => state.auth.user?.admin);
+	// const isAdmin = useSelector((state: any) => state.auth.user?.admin);
+	const isAdmin = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')!).admin : false;
 	const { theme } = useTheme();
 	const logoSrc = theme === 'dark' ? bubblemapLogoDark : bubblemapLogo;
 
