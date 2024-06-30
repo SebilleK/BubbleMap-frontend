@@ -44,8 +44,7 @@ TailwindCSS classes are used for styling and shadcn/ui pre-made components were 
 
 ## Attributions
 
-- Map markers Icon: https://lucide.dev/icons/cup-soda **"Soda Cup" icon on Lucide**
-- Background image for some pages: https://unsplash.com/photos/clear-plastic-container-dHQQv-BKTjo by **Orimi Protograph on Unplash**
+- Map markers Icon: https://lucide.dev/icons/store **"Store" icon on Lucide**
 - Bubble Tea "BubbleMap" Logo (both variants): https://www.flaticon.com/free-icons/bubble-tea by **Luvdat on Flaticon**
 
 ## More: Development Notes
