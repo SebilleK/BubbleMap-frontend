@@ -4,9 +4,6 @@
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
 This is the frontend for the [BubbleMap](https://github.com/SebilleK/BubbleMap) project.
-It is using the React + Vite template found [here](https://github.com/SebilleK/bun-shadcnreact).
-
-Currently under development.
 
 ## Quickstart
 
@@ -17,6 +14,16 @@ bun run dev
 
 Make sure the backend and the database are BOTH running.
 See **src/api/axiosInstance.ts** to set correct URL for the backend.
+
+## Deployment
+
+![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
+
+**Live on Render:**
+
+- https://bubblemap-frontend.onrender.com
+
+![Frontend Homepage](src/assets/frontend-example.gif)
 
 ---
 
@@ -37,11 +44,10 @@ TailwindCSS classes are used for styling and shadcn/ui pre-made components were 
 
 ## Attributions
 
-- Map markers Icon: https://lucide.dev/icons/cup-soda **"Soda Cup" icon on Lucide**
-- Background image for some pages: https://unsplash.com/photos/clear-plastic-container-dHQQv-BKTjo by **Orimi Protograph on Unplash**
-- Bubble Tea "BubbleMap" Logo: https://www.flaticon.com/free-icons/bubble-tea by **Luvdat on Flaticon**
+- Map markers Icon: https://lucide.dev/icons/store **"Store" icon on Lucide**
+- Bubble Tea "BubbleMap" Logo (both variants): https://www.flaticon.com/free-icons/bubble-tea by **Luvdat on Flaticon**
 
-## More
+## More: Development Notes
 
 1. Using the defined Axios instance in **src/api/axiosInstance.ts**, custom API requests to the backend are all defined in **src/api/utils/requests.ts**. These are used throughout the components as needed, and as a way of centralizing this utility without cramping the components with request definitions, so it contributes a little towards some modularity and better consistency.
 
@@ -155,3 +161,4 @@ Based on this useful answer:
 - You can browse the reviews per store on the Homepage
 - Alerts: on Login (Unregistered email, Wrong password); on Register (Already existing username or email, Password(s) matching & password verifying); on Profile (Invalid reviews update, Invalid user info update)
 - Dark Mode
+- Admin page: administrators have access to an exclusive page to create new stores, and they can delete/update existing stores as well.

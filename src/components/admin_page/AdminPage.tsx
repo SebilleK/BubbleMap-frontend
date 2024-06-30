@@ -10,6 +10,8 @@ import AlertMessage from '../Alert';
 
 import { createStore } from '../../api/utils/requests';
 
+import StoreList from './StoreList';
+
 export default function AdminPage() {
 	const dispatch = useDispatch();
 	const alertState = useSelector((state: any) => state.auth.alert);
@@ -94,6 +96,8 @@ export default function AdminPage() {
 					</div>
 				</form>
 			</Card>
+
+			<StoreList />
 		</div>
 	);
 }

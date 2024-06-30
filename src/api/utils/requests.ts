@@ -75,6 +75,32 @@ export async function createStore(body: any) {
 	}
 }
 
+export async function deleteStore(id: string) {
+	console.log('deleting store...');
+	try {
+		const response = await axiosInstance.delete(`/stores/${id}`);
+		console.log('store deleted successfully in the db, returning response...');
+		return response.data;
+	} catch (error) {
+		console.log('there was an error while deleting store, returning error...');
+		console.error(error);
+		return error;
+	}
+}
+
+export async function updateStore(id: string, body: any) {
+	console.log('updating store...');
+	try {
+		const response = await axiosInstance.put(`/stores/${id}`, body);
+		console.log('store updated successfully in the db, returning response...');
+		return response.data;
+	} catch (error) {
+		console.log('there was an error while updating store, returning error...');
+		console.error(error);
+		return error;
+	}
+}
+
 //?REVIEWS
 
 //? Get all reviews
