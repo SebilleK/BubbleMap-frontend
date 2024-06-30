@@ -88,6 +88,19 @@ export async function deleteStore(id: string) {
 	}
 }
 
+export async function updateStore(id: string, body: any) {
+	console.log('updating store...');
+	try {
+		const response = await axiosInstance.put(`/stores/${id}`, body);
+		console.log('store updated successfully in the db, returning response...');
+		return response.data;
+	} catch (error) {
+		console.log('there was an error while updating store, returning error...');
+		console.error(error);
+		return error;
+	}
+}
+
 //?REVIEWS
 
 //? Get all reviews

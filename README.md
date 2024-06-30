@@ -15,7 +15,7 @@ bun run dev
 Make sure the backend and the database are BOTH running.
 See **src/api/axiosInstance.ts** to set correct URL for the backend.
 
-## Deployment 
+## Deployment
 
 ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
 
@@ -162,4 +162,4 @@ Based on this useful answer:
 - You can browse the reviews per store on the Homepage
 - Alerts: on Login (Unregistered email, Wrong password); on Register (Already existing username or email, Password(s) matching & password verifying); on Profile (Invalid reviews update, Invalid user info update)
 - Dark Mode
-- Admin page: administrators have access to an exclusive page to create new stores, and they can delete existing stores as well.
+- Admin page: administrators have access to an exclusive page to create new stores, and they can delete/update existing stores as well.
