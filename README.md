@@ -19,7 +19,7 @@ See **src/api/axiosInstance.ts** to set correct URL for the backend.
 
 ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
 
-**Live on Render:**
+~~**Live on Render:**~~**NOT UPDATED**
 
 - https://bubblemap-frontend.onrender.com
 
